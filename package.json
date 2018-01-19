@@ -1,0 +1,28 @@
+{
+  "name": "homeworkreview",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.15.0",
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0",
+    "redux-devtools": "^3.4.1",
+    "redux-mock-store": "^1.4.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "extends": ["react-app"],
+    "rules": {
+        // enable additional rules
+        "indent": [
+            "off",
+            0
+        ],
+        "linebreak-style": ["error", "unix"],
+        "quotes": [
+            "error",
+            "double",
+            {
+                "avoidEscape": true
+            }
+        ],
+        "semi": ["error", "always"],
+
+        // override default options for rules from base configurations
+        "no-cond-assign": ["error", "always"],
+
+        // disable rules from base configurations
+        "no-console": ["error"],
+
+        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+    }
+}
