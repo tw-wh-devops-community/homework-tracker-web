@@ -9,12 +9,12 @@
         "linebreak-style": ["error", "unix"],
         "quotes": [
             "error",
-            "double",
+            "single",
             {
                 "avoidEscape": true
             }
         ],
-        "semi": ["error", "always"],
+        "semi": [2, "never"],
 
         // override default options for rules from base configurations
         "no-cond-assign": ["error", "always"],

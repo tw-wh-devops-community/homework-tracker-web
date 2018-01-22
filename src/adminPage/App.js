@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import Admin from "./Admin";
+import React, {Component} from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Admin from './Admin'
 
 export class App extends Component {
 
@@ -12,8 +12,8 @@ export class App extends Component {
         </div>
       </Router>
 
-    );
+    )
   }
 }
 
-export default App;
+export default App
