@@ -1,27 +1,53 @@
 {
-    "extends": ["react-app"],
-    "rules": {
-        // enable additional rules
-        "indent": [
-            "off",
-            0
-        ],
-        "linebreak-style": ["error", "unix"],
-        "quotes": [
-            "error",
-            "single",
-            {
-                "avoidEscape": true
-            }
-        ],
-        "semi": [2, "never"],
-
-        // override default options for rules from base configurations
-        "no-cond-assign": ["error", "always"],
-
-        // disable rules from base configurations
-        "no-console": ["error"],
-
-        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
-    }
+  "extends": [
+    "airbnb"
+  ],
+  "globals": {
+    "window": true,
+    "document": true
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "indent": [
+      "off",
+      0
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "semi": [
+      2,
+      "never"
+    ],
+    "no-cond-assign": [
+      "error",
+      "always"
+    ],
+    "no-console": [
+      "error"
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "quote-props": ["error", "consistent"],
+    "jsx-quotes": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  }
 }

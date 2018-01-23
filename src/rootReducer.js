@@ -1,8 +1,8 @@
-import {combineReducers} from 'redux'
-import adminReducer from './admin/adminReducer'
+import { combineReducers } from 'redux'
+import homework from './homework/reducer'
 
 const rootReducer = combineReducers({
-  admin: adminReducer
+  homework,
 })
 
 export default rootReducer
