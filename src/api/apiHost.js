@@ -1,8 +1,10 @@
 export const ENV = {
-  DEV: 'dev',
+  DEV: 'development',
   TEST: 'test',
-  PROD: 'prod',
+  PROD: 'production',
 }
+
+export const APP_ENV = process.env.NODE_ENV
 
 const localServer = 'http://localhost:3000/api'
 
@@ -13,7 +15,7 @@ export const HOST = {
 }
 
 const ApiHost = () => {
-  switch (process.env.NODE_ENV) {
+  switch (APP_ENV) {
     case ENV.DEV:
       return HOST.DEV
     case ENV.TEST:
