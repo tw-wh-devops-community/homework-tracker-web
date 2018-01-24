@@ -26,9 +26,14 @@ npm i
 npm start
 ```
 
-#### Guidelines
+### How to debug
 
-##### Git commit
+We use [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) for redux debugging.
+You can install the browser plugin following [installation instruction](https://github.com/zalmoxisus/redux-devtools-extension#installation).
+
+### Guidelines
+
+#### Git commit
 
 In order to make our commit messages more readable and easy to follow when looking through the project history, we made the git commit guideline. 
 
