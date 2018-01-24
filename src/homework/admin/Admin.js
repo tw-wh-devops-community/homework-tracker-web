@@ -13,6 +13,7 @@ export class Admin extends Component {
     const { homeworks } = this.props
     return (
       <div className='homepage'>
+        <div>HOMEWORK 管理平台</div>
         {homeworks.length}
       </div>
     )
