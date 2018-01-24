@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from 'redux'
+import { applyMiddleware, createStore, compose } from 'redux'
 import promiseMiddleware from 'redux-promise-middleware'
 import rootReducer from './rootReducer'
 import { APP_ENV, ENV } from './api/apiHost'
@@ -7,6 +7,8 @@ const middlewares = [
   promiseMiddleware(),
 ]
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose // eslint-disable-line
+
 if (APP_ENV === ENV.DEV) {
   const { createLogger } = require('redux-logger') // eslint-disable-line
   middlewares.push(createLogger({ collapsed: true }))
@@ -14,7 +16,7 @@ if (APP_ENV === ENV.DEV) {
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(...middlewares),
+  composeEnhancers(applyMiddleware(...middlewares)),
 )
 
 export default store
