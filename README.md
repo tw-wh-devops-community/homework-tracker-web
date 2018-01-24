@@ -1,4 +1,5 @@
 ## Homework Tracker
+[![Build Status](https://travis-ci.org/tw-wh-devops-community/homework-tracker-web.svg?branch=master)](https://travis-ci.org/tw-wh-devops-community/homework-tracker-web)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
