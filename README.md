@@ -27,6 +27,16 @@ npm i
 npm start
 ```
 
+#### How to run lint
+```
+npm run lint
+```
+
+#### How to run test
+```
+npm test
+```
+
 ### How to debug
 
 We use [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) for redux debugging.
