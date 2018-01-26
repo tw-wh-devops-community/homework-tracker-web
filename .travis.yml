@@ -12,4 +12,8 @@ script:
   - npm run lint
   - npm run build
   - npm test
-  - sh ./buildDockerImage.sh
+deploy:
+  provider: script
+    script: ./buildDockerImage.sh
+    on:
+      branch: master
