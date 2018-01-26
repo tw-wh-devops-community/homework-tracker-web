@@ -6,12 +6,12 @@ export const ENV = {
 
 export const APP_ENV = process.env.NODE_ENV
 
-const localServer = 'http://localhost:3000/api'
+const localServer = 'http://localhost:5678/api'
 
 export const HOST = {
   DEV: localServer,
   TEST: localServer,
-  PROD: 'http://xxx/api',
+  PROD: 'http://54.223.64.0:5678/api',
 }
 
 const ApiHost = () => {
