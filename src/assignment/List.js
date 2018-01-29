@@ -10,7 +10,7 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   vertical: true,
-  autoplay: true,
+  autoplay: false,
 }
 
 const Assignments = () => (
