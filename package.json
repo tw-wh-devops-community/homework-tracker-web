@@ -4,16 +4,22 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+<<<<<<< HEAD
     "moment": "^2.20.1",
+=======
+    "jquery": "^3.3.1",
+>>>>>>> [panpan] feat: slide demo
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
+    "react-slick": "^0.16.0",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
-    "redux-promise-middleware": "^5.0.0"
+    "redux-promise-middleware": "^5.0.0",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "lint": "eslint src",
