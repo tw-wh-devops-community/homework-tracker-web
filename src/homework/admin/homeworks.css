@@ -1,0 +1,43 @@
+.table{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tableHeader{
+    display: flex;
+    background: #bfbaba;
+    height: 40px;
+    justify-content: space-around;
+}
+
+.tableRow{
+    display: flex;
+    height: 40px;
+    justify-content: space-around;
+}
+
+.tableValue {
+    display: flex;
+    flex-direction: column;
+}
+.tableColumn{
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+}
+.tableEditIcon{
+    display: none;
+    width: 25px;
+    padding-right: 10px;
+}
+.inProcess:hover .tableEditIcon{
+    display:block;
+}
+.timeout:hover .tableEditIcon{
+    display:block;
+}
+.timeout .tableColumn{
+    color: red;
+}
