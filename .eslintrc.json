@@ -11,6 +11,7 @@
     "node": true,
     "jest": true
   },
+  "parser": "babel-eslint",
   "rules": {
     "indent": [
       "off",
