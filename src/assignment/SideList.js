@@ -5,8 +5,12 @@ import ReactList from 'react-list'
 import './List.css'
 
 export default class SideList extends Component {
-  test = () => {
-    this.list.scrollTo(this.props.assignments.length - 1)
+  componentDidMount() {
+    setTimeout(() => {
+      if (this.list) {
+        this.list.scrollTo(this.props.assignments.length - 1)
+      }
+    }, 1000)
   }
 
   renderItem = (index, key) => {
@@ -33,16 +37,15 @@ export default class SideList extends Component {
 
   render() {
     return (
-      <div>
-        <div style={{ overflow: 'auto', maxHeight: 400 }}>
-          <ReactList
-            ref={(list) => { this.list = list }}
-            itemRenderer={this.renderItem}
-            length={this.props.assignments.length}
-            type="uniform"
-          />
-        </div>
-        <button onClick={this.test} />
+      <div style={{ overflow: 'auto', maxHeight: 500 }}>
+        <ReactList
+          ref={(list) => {
+            this.list = list
+          }}
+          itemRenderer={this.renderItem}
+          length={this.props.assignments.length}
+          type="uniform"
+        />
       </div>
     )
   }
