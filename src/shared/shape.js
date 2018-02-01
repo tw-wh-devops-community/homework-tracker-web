@@ -1,15 +1,23 @@
 import PropTypes from 'prop-types'
 
 export const HomeworkShape = PropTypes.shape({
-  homework_id: PropTypes.string.isRequired,
-  interviewer_id: PropTypes.string.isRequired,
-  interviewer: PropTypes.string.isRequired,
-  candidate: PropTypes.string.isRequired,
-  job_role: PropTypes.string.isRequired,
-  assigned_date: PropTypes.string.isRequired,
-  deadline_date: PropTypes.string.isRequired,
-  finished_date: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  homework: {
+    id: PropTypes.string.isRequired,
+    candidate: PropTypes.string.isRequired,
+    job_role: PropTypes.string.isRequired,
+  },
+  interviewer: {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    employee_id: PropTypes.string.isRequired,
+  },
+  assigned_date: PropTypes.instanceOf(Date).isRequired,
+  deadline_date: PropTypes.instanceOf(Date).isRequired,
+  finished_date: PropTypes.instanceOf(Date).isRequired,
   status: PropTypes.string.isRequired,
+
 })
 
 export const InterviewerShape = PropTypes.shape({

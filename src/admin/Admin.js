@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Homeworks from './Homeworks'
-import './admin.css'
+import Assignments from './Assignments'
+import './css/admin.css'
 
 // eslint-disable-next-line react/prefer-stateless-function
 export class Admin extends Component {
@@ -13,7 +13,7 @@ export class Admin extends Component {
             <button>New</button>
           </div>
         </div>
-        <Homeworks />
+        <Assignments />
       </div>
     )
   }
