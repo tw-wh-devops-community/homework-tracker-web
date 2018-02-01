@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { HomeworkShape } from '../shared/shape'
-import { fetchAssignments } from './actions'
 import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
+import { HomeworkShape } from '../shared/shape'
+import { fetchAssignments } from './actions'
+
 import './css/assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
@@ -17,9 +18,9 @@ export class Assignments extends Component {
 
   renderItem = (assignment, index) => {
     const tableValue = classNames(`table-row ${assignment.status}`, {
-      'highlight-item': index % 2 === 0 ,
+      'highlight-item': index % 2 === 0,
     })
-    return(
+    return (
       <div
         key={assignment.id}
         className={tableValue}
@@ -32,9 +33,9 @@ export class Assignments extends Component {
         <div className='table-column'>{assignment.finished_date}</div>
         <div className='table-column'>{homeworkStatus[assignment.status]}</div>
         <div className='table-column'>
-          <i class="fa fa-check table-editIcon"></i>
-          <i class="fa fa-edit table-editIcon"></i>
-          <i class="fa fa-trash table-editIcon"></i>
+          <i className="fa fa-check table-editIcon" />
+          <i className="fa fa-edit table-editIcon" />
+          <i className="fa fa-trash table-editIcon" />
         </div>
       </div>
     )
@@ -52,9 +53,7 @@ export class Assignments extends Component {
           <div className='table-column' />
         </div>
         <div className='table-value'>
-          {
-            assignments.map((assignment, index)=>this.renderItem(assignment, index))
-          }
+          {assignments.map((assignment, index) => this.renderItem(assignment, index))}
         </div>
       </div>
 

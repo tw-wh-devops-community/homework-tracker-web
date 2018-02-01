@@ -15,7 +15,7 @@ describe('<Homeworks/>', () => {
   })
   it('should render Homeworks component with table header', () => {
     const wrapper = shallow(<Assignments {...props} />)
-    const tableHeader = <div className="tableColumn">面试官</div>
+    const tableHeader = <div className="table-column">面试官</div>
     expect(wrapper).toContainReact(tableHeader)
   })
 })
