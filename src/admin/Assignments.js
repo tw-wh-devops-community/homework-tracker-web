@@ -3,17 +3,24 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
-import { HomeworkShape } from '../shared/shape'
+import moment from 'moment'
+import { AssignmentShape } from '../shared/shape'
 import { fetchAssignments } from './actions'
-
 import './css/assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
-const homeworkStatus = { finish: '已完成', inProcess: '进行中', timeout: '已超期' }
+const assignmentStatus = { finished: '已完成', ongoing: '进行中', overdue: '已超期' }
 
 export class Assignments extends Component {
   componentWillMount() {
     this.props.fetchAssignments()
+  }
+  
+  dateFormat = (date) => {
+    if (date != null ){
+      return moment(date).format('YYYY-MM-DD HH:mm:ss')
+    }
+    else return ''
   }
 
   renderItem = (assignment, index) => {
@@ -25,17 +32,17 @@ export class Assignments extends Component {
         key={assignment.id}
         className={tableValue}
       >
-        <div className='table-column'>{assignment.interviewer.name}</div>
-        <div className='table-column'>{assignment.homework.candidate}</div>
-        <div className='table-column'>{assignment.homework.job_role}</div>
-        <div className='table-column'>{assignment.assigned_date}</div>
-        <div className='table-column'>{assignment.deadline_date}</div>
-        <div className='table-column'>{assignment.finished_date}</div>
-        <div className='table-column'>{homeworkStatus[assignment.status]}</div>
+        <div className='table-column'>{assignment.interviewer_name}</div>
+        <div className='table-column'>{assignment.candidate}</div>
+        <div className='table-column'>{assignment.job_role}</div>
+        <div className='table-column'>{this.dateFormat(assignment.assigned_date)}</div>
+        <div className='table-column'>{this.dateFormat(assignment.deadline_date)}</div>
+        <div className='table-column'>{this.dateFormat(assignment.finished_date)}</div>
+        <div className='table-column'>{assignmentStatus[assignment.status]}</div>
         <div className='table-column'>
           <i className="fa fa-check table-editIcon" />
           <i className="fa fa-edit table-editIcon" />
-          <i className="fa fa-trash table-editIcon" />
+          <i className="fa fa-trash table-editIcon"/>
         </div>
       </div>
     )
@@ -43,7 +50,6 @@ export class Assignments extends Component {
 
   render() {
     const assignments = this.props.assignments
-
     return (
       <div className='table'>
         <div className='table-header'>
@@ -62,7 +68,7 @@ export class Assignments extends Component {
 }
 
 Assignments.propTypes = {
-  assignments: PropTypes.arrayOf(HomeworkShape),
+  assignments: PropTypes.arrayOf(AssignmentShape),
   fetchAssignments: PropTypes.func.isRequired,
 }
 

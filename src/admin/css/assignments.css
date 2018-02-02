@@ -37,12 +37,12 @@
     width: 25px;
     padding-right: 10px;
 }
-.inProcess:hover .table-editIcon{
+.ongoing:hover .table-editIcon{
     display:block;
 }
-.timeout:hover .table-editIcon{
+.overdue:hover .table-editIcon{
     display:block;
 }
-.timeout .table-column{
+.overdue .table-column{
     color: red;
 }
