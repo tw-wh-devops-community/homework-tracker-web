@@ -1,21 +1,21 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Homeworks } from '../Homeworks'
+import { Assignments } from '../Assignments'
 
 describe('<Homeworks/>', () => {
   let props = {}
   beforeEach(() => {
     props = {
-      fetchHomeworks: jest.fn(),
-      homeworks: [],
+      fetchAssignments: jest.fn(),
+      assignments: [],
     }
   })
   it('should render Homeworks component without crashing', () => {
-    shallow(<Homeworks {...props} />)
+    shallow(<Assignments {...props} />)
   })
   it('should render Homeworks component with table header', () => {
-    const wrapper = shallow(<Homeworks {...props} />)
-    const tableHeader = <div className="tableColumn">面试官</div>
+    const wrapper = shallow(<Assignments {...props} />)
+    const tableHeader = <div className="table-column">面试官</div>
     expect(wrapper).toContainReact(tableHeader)
   })
 })

@@ -8,7 +8,7 @@ describe('<Admin/>', () => {
   })
   it('should render Admin component with title', () => {
     const wrapper = shallow(<Admin />)
-    const title = <div className="homePage">HOMEWORK 管理平台</div>
+    const title = <div className="homepage-logo">HOMEWORK 管理平台</div>
     expect(wrapper).toContainReact(title)
   })
 })

@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
-    "moment": "^2.20.1",
     "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "moment": "^2.20.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -24,7 +25,9 @@
     "lint": "eslint src",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "test-no-watch": "CI=true react-scripts test",
+    "prepush": "npm run lint | npm run test-no-watch"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
@@ -34,6 +37,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.14.3",
     "jest-enzyme": "^4.0.2",
     "react-test-renderer": "^16.2.0",
     "redux-logger": "^3.0.6",
