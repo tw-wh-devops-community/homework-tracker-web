@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: blueviolet;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.modal-container {
+  width: 650px;
+  height: 520px;
+  border-radius: 5px;
+  background-color: #ACACAC;
+}
+
+.new-title {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.row {
+  height: 70px;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: flex-end;
+  padding-right: 90px;
+}
+
+.field {
+  font-size: 25px;
+  color: white;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.input {
+  width: 240px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 18px;
+  border: 1px solid;
+  color: #514d4d;
+}
+
+.button-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.button {
+  height: 40px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  color: white;
+}
+
+.cancel {
+  margin-right: 10px;
+  background-color: #777777;
+}
+
+.confirm {
+  margin-left: 10px;
+  background-color: #4579FB;
+}
