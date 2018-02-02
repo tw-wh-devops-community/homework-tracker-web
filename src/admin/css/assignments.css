@@ -46,3 +46,7 @@
 .overdue .table-column{
     color: red;
 }
+
+.table-column i{
+    cursor:pointer
+}

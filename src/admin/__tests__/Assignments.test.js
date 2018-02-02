@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Assignments } from '../Assignments'
 
-describe('<Homeworks/>', () => {
+describe('<Assignments/>', () => {
   let props = {}
   beforeEach(() => {
     props = {

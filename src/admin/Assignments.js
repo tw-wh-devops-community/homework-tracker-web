@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
 import moment from 'moment'
 import { AssignmentShape } from '../shared/shape'
-import { fetchAssignments } from './actions'
+import { fetchAssignments, deleteAssignment } from './actions'
 import './css/assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
@@ -16,10 +16,7 @@ export class Assignments extends Component {
     this.props.fetchAssignments()
   }
 
-  dateFormat = (date) => {
-    if (date != null) { return moment(date).format('YYYY-MM-DD HH:mm:ss') }
-    return ''
-  }
+  dateFormat = date => (date ? moment(date).format('YYYY-MM-DD HH:mm:ss') : '')
 
   renderItem = (assignment, index) => {
     const tableValue = classNames(`table-row ${assignment.status}`, {
@@ -38,9 +35,9 @@ export class Assignments extends Component {
         <div className='table-column'>{this.dateFormat(assignment.finished_date)}</div>
         <div className='table-column'>{assignmentStatus[assignment.status]}</div>
         <div className='table-column'>
-          <i className="fa fa-check table-editIcon" />
-          <i className="fa fa-edit table-editIcon" />
-          <i className="fa fa-trash table-editIcon" />
+          <i className='fa fa-check table-editIcon' />
+          <i className='fa fa-edit table-editIcon' />
+          <i className='fa fa-trash table-editIcon' role='presentation' onClick={() => this.props.deleteAssignment(assignment.id)} />
         </div>
       </div>
     )
@@ -68,6 +65,7 @@ export class Assignments extends Component {
 Assignments.propTypes = {
   assignments: PropTypes.arrayOf(AssignmentShape),
   fetchAssignments: PropTypes.func.isRequired,
+  deleteAssignment: PropTypes.func.isRequired,
 }
 
 Assignments.defaultProps = {
@@ -78,4 +76,4 @@ const mapStateToProps = state => ({
   assignments: state.assignment.assignments,
 })
 
-export default connect(mapStateToProps, { fetchAssignments })(Assignments)
+export default connect(mapStateToProps, { fetchAssignments, deleteAssignment })(Assignments)
