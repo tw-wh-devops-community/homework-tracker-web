@@ -15,12 +15,10 @@ export class Assignments extends Component {
   componentWillMount() {
     this.props.fetchAssignments()
   }
-  
+
   dateFormat = (date) => {
-    if (date != null ){
-      return moment(date).format('YYYY-MM-DD HH:mm:ss')
-    }
-    else return ''
+    if (date != null) { return moment(date).format('YYYY-MM-DD HH:mm:ss') }
+    return ''
   }
 
   renderItem = (assignment, index) => {
@@ -42,7 +40,7 @@ export class Assignments extends Component {
         <div className='table-column'>
           <i className="fa fa-check table-editIcon" />
           <i className="fa fa-edit table-editIcon" />
-          <i className="fa fa-trash table-editIcon"/>
+          <i className="fa fa-trash table-editIcon" />
         </div>
       </div>
     )
