@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions'
+import moment from 'moment'
 import api from '../api/api'
 
 export const FETCH_ASSIGNMENT = 'ASSIGNMENT/FETCH_ASSIGNMENT'
@@ -9,5 +10,17 @@ export const fetchAssignments = createAction(FETCH_ASSIGNMENT, () => api.get('/a
 
 export const deleteAssignment = createAction(DELETE_ASSIGNMENT, assignmentId => api.delete(`/assignments/${assignmentId}`), assignmentId => [{ id: assignmentId }])
 
+export const finishedAssignment = assignmentId => (
+  (dispatch) => {
+    api.put('/assignments',
+      {
+        id: assignmentId,
+        finished_date: moment().format(),
+        is_finished: true,
+      }).then(() =>
+      dispatch(fetchAssignments()),
+    )
+  }
+)
 export const createAssignment = createAction(CREATE_ASSIGNMENT, () => api.post('/assignments'))
 

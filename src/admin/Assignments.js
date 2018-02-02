@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
 import moment from 'moment'
 import { AssignmentShape } from '../shared/shape'
-import { fetchAssignments, deleteAssignment } from './actions'
+import { fetchAssignments, deleteAssignment, finishedAssignment } from './actions'
 import './css/assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
@@ -35,7 +35,7 @@ export class Assignments extends Component {
         <div className='table-column'>{this.dateFormat(assignment.finished_date)}</div>
         <div className='table-column'>{assignmentStatus[assignment.status]}</div>
         <div className='table-column'>
-          <i className='fa fa-check table-editIcon' />
+          <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.props.finishedAssignment(assignment.id)} />
           <i className='fa fa-edit table-editIcon' />
           <i className='fa fa-trash table-editIcon' role='presentation' onClick={() => this.props.deleteAssignment(assignment.id)} />
         </div>
@@ -66,6 +66,7 @@ Assignments.propTypes = {
   assignments: PropTypes.arrayOf(AssignmentShape),
   fetchAssignments: PropTypes.func.isRequired,
   deleteAssignment: PropTypes.func.isRequired,
+  finishedAssignment: PropTypes.func.isRequired,
 }
 
 Assignments.defaultProps = {
@@ -76,4 +77,5 @@ const mapStateToProps = state => ({
   assignments: state.assignment.assignments,
 })
 
-export default connect(mapStateToProps, { fetchAssignments, deleteAssignment })(Assignments)
+export default connect(mapStateToProps,
+  { fetchAssignments, deleteAssignment, finishedAssignment })(Assignments)

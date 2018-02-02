@@ -1,10 +1,12 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import promiseMiddleware from 'redux-promise-middleware'
+import thunk from 'redux-thunk'
 import rootReducer from './rootReducer'
 import { APP_ENV, ENV } from './api/apiHost'
 
 const middlewares = [
   promiseMiddleware(),
+  thunk,
 ]
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose // eslint-disable-line
