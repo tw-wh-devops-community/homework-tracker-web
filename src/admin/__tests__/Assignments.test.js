@@ -7,8 +7,9 @@ describe('<Assignments/>', () => {
   beforeEach(() => {
     props = {
       fetchAssignments: jest.fn(),
-      deleteAssignment: jest.fn(),
-      finishedAssignment: jest.fn(),
+      showFinishModal: jest.fn(),
+      showDeleteModal: jest.fn(),
+      setSelectAssignmentId: jest.fn(),
       assignments: [],
     }
   })

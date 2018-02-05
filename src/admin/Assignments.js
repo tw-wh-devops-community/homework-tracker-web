@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
 import moment from 'moment'
 import { AssignmentShape } from '../shared/shape'
-import { fetchAssignments, setSelectAssignmentId, finishAssignment, showDeleteModal } from './actions'
+import { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal } from './actions'
 import './css/assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
@@ -18,6 +18,11 @@ export class Assignments extends Component {
 
   changeShowDeleteModal = (selectAssignmentId) => {
     this.props.showDeleteModal()
+    this.props.setSelectAssignmentId(selectAssignmentId)
+  }
+
+  changeShowFinishModal = (selectAssignmentId) => {
+    this.props.showFinishModal()
     this.props.setSelectAssignmentId(selectAssignmentId)
   }
 
@@ -40,7 +45,7 @@ export class Assignments extends Component {
         <div className='table-column'>{this.dateFormat(assignment.finished_date)}</div>
         <div className='table-column'>{assignmentStatus[assignment.status]}</div>
         <div className='table-column'>
-          <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.props.finishAssignment(assignment.id)} />
+          <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.changeShowFinishModal(assignment.id)} />
           <i className='fa fa-edit table-editIcon' />
           <i className='fa fa-trash table-editIcon' role='presentation' onClick={() => this.changeShowDeleteModal(assignment.id)} />
         </div>
@@ -70,7 +75,8 @@ export class Assignments extends Component {
 Assignments.propTypes = {
   assignments: PropTypes.arrayOf(AssignmentShape),
   fetchAssignments: PropTypes.func.isRequired,
-  finishAssignment: PropTypes.func.isRequired,
+  showFinishModal: PropTypes.func.isRequired,
+  showDeleteModal: PropTypes.func.isRequired,
   setSelectAssignmentId: PropTypes.func.isRequired,
 }
 
@@ -83,4 +89,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps,
-  { fetchAssignments, setSelectAssignmentId, finishAssignment,showDeleteModal })(Assignments)
+  { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal })(Assignments)

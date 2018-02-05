@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Assignments from './Assignments'
 import NewAssignment from './NewAssignment'
 import DeleteAssignment from './DeleteAssignment'
-import { showDeleteModal } from './actions'
+import FinishAssignment from './FinishAssignment'
 import './css/admin.css'
 
 export class Admin extends Component {
@@ -28,13 +29,25 @@ export class Admin extends Component {
         <Assignments />
         { showModal && <NewAssignment onCancel={this.changeShowModal} /> }
         { this.props.showDeleteModal && <DeleteAssignment /> }
+        { this.props.showFinishModal && <FinishAssignment /> }
       </div>
     )
   }
 }
 
+Admin.propTypes = {
+  showDeleteModal: PropTypes.bool,
+  showFinishModal: PropTypes.bool,
+}
+
+Admin.defaultProps = {
+  showDeleteModal: false,
+  showFinishModal: false,
+}
+
 const mapStateToProps = state => ({
   showDeleteModal: state.assignment.changeModal.showDeleteModal,
+  showFinishModal: state.assignment.changeModal.showFinishModal,
 })
 
-export default connect(mapStateToProps, showDeleteModal )(Admin)
+export default connect(mapStateToProps)(Admin)

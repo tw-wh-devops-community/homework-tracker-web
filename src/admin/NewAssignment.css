@@ -25,7 +25,7 @@
   font-size: 30px;
   font-weight: 300;
   text-align: center;
-  padding: 40px 0;
+  padding: 40px 0 20px 0;
 }
 
 .row {
@@ -35,7 +35,7 @@
   align-items: center;
   -ms-flex-pack: center;
   justify-content: flex-end;
-  padding-right: 90px;
+  padding-right: 180px;
 }
 
 .field {
@@ -56,8 +56,8 @@
 
 .button-container {
   justify-content: center;
-  align-items: center;
   display: flex;
+  padding-top: 20px;
 }
 
 .button {
@@ -77,4 +77,11 @@
 .confirm {
   margin-left: 10px;
   background-color: #4579FB;
+}
+
+.modal-delete {
+  height: 240px;
+}
+.modal-finish {
+  height: 300px;
 }
