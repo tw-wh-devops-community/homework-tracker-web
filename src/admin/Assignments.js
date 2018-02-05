@@ -6,7 +6,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import moment from 'moment'
 import { AssignmentShape } from '../shared/shape'
 import { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal } from './actions'
-import './css/assignments.css'
+import './Assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
 const assignmentStatus = { finished: '已完成', ongoing: '进行中', overdue: '已超期' }

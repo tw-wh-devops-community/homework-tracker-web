@@ -5,7 +5,7 @@ import Assignments from './Assignments'
 import NewAssignment from './NewAssignment'
 import DeleteAssignment from './DeleteAssignment'
 import FinishAssignment from './FinishAssignment'
-import './css/admin.css'
+import './Admin.css'
 
 export class Admin extends Component {
   state = {
