@@ -2,18 +2,29 @@ import { handleActions, combineActions } from 'redux-actions'
 import { combineReducers } from 'redux'
 import { differenceBy } from 'lodash'
 import { pending, resolve, reject } from '../utilities/actionConst'
-import { FETCH_ASSIGNMENT, DELETE_ASSIGNMENT, SET_ASSIGNMENT_ID, SHOW_DELETE_MODAL, SHOW_FINISH_MODAL } from './actions'
+import { FETCH_ASSIGNMENT,
+  DELETE_ASSIGNMENT,
+  FETCH_INTERVIEWERS,
+  SET_ASSIGNMENT_ID,
+  SHOW_DELETE_MODAL,
+  SHOW_FINISH_MODAL }
+from './actions'
 
 const REQUEST_ASSIGNMENT_FINISHED = combineActions(resolve(FETCH_ASSIGNMENT)
   , reject(FETCH_ASSIGNMENT))
+
+const REQUEST_INTERVIEWERS_FINISHED = combineActions(resolve(FETCH_INTERVIEWERS)
+  , reject(FETCH_INTERVIEWERS))
 
 const DELETE_ASSIGNMENT_FINISHED = combineActions(resolve(DELETE_ASSIGNMENT)
   , reject(DELETE_ASSIGNMENT))
 
 const loading = handleActions({
   [pending(FETCH_ASSIGNMENT)]: () => true,
+  [pending(FETCH_INTERVIEWERS)]: () => true,
   [pending(DELETE_ASSIGNMENT)]: () => true,
   [REQUEST_ASSIGNMENT_FINISHED]: () => false,
+  [REQUEST_INTERVIEWERS_FINISHED]: () => false,
   [DELETE_ASSIGNMENT_FINISHED]: () => false,
 }, false)
 
@@ -21,6 +32,11 @@ const loading = handleActions({
 const assignments = handleActions({
   [resolve(FETCH_ASSIGNMENT)]: (state, { payload }) => payload,
   [resolve(DELETE_ASSIGNMENT)]: (state, { meta }) => differenceBy(state, meta, 'id'),
+}, [])
+
+const interviewers = handleActions({
+   [resolve(FETCH_INTERVIEWERS)]: (state, { payload }) => payload.map(interviewer => (
+     { value: interviewer.employee_id, label: interviewer.name })),
 }, [])
 
 const setAssignmentId = handleActions({
@@ -34,6 +50,7 @@ const changeModal = handleActions({
 }, false)
 
 export default combineReducers({
+  interviewers,
   loading,
   assignments,
   setAssignmentId,

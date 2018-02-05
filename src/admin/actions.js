@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions'
 import api from '../api/api'
 
+export const FETCH_INTERVIEWERS = 'ASSIGNMENT/FETCH_INTERVIEWERS'
 export const FETCH_ASSIGNMENT = 'ASSIGNMENT/FETCH_ASSIGNMENT'
 export const DELETE_ASSIGNMENT = 'ASSIGNMENT/DELETE_ASSIGNMENT'
 export const CREATE_ASSIGNMENT = 'ASSIGNMENT/CREATE_ASSIGNMENT'
@@ -8,6 +9,7 @@ export const SET_ASSIGNMENT_ID = 'ASSIGNMENT/SET_ASSIGNMENT_ID'
 export const SHOW_DELETE_MODAL = 'ASSIGNMENT/SHOW_DELETE_MODAL'
 export const SHOW_FINISH_MODAL = 'ASSIGNMENT/SHOW_FINISH_MODAL'
 
+export const fetchInterviewers = createAction(FETCH_INTERVIEWERS, () => api.get('/interviewers'))
 export const fetchAssignments = createAction(FETCH_ASSIGNMENT, () => api.get('/assignments'))
 
 export const deleteAssignment = createAction(DELETE_ASSIGNMENT, assignmentId =>
@@ -25,7 +27,7 @@ export const finishAssignment = (assignmentId, finishTime) => (
     )
   }
 )
-export const createAssignment = createAction(CREATE_ASSIGNMENT, () => api.post('/assignments'))
+export const createAssignment = createAction(CREATE_ASSIGNMENT, data => api.post('/assignments', data))
 
 export const setSelectAssignmentId = createAction(SET_ASSIGNMENT_ID, assignmentId => assignmentId)
 
