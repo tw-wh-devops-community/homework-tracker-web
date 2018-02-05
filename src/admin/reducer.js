@@ -2,7 +2,7 @@ import { handleActions, combineActions } from 'redux-actions'
 import { combineReducers } from 'redux'
 import { differenceBy } from 'lodash'
 import { pending, resolve, reject } from '../utilities/actionConst'
-import { FETCH_ASSIGNMENT, DELETE_ASSIGNMENT } from './actions'
+import { FETCH_ASSIGNMENT, DELETE_ASSIGNMENT, SET_ASSIGNMENT_ID, SHOW_DELETE_MODAL } from './actions'
 
 const REQUEST_ASSIGNMENT_FINISHED = combineActions(resolve(FETCH_ASSIGNMENT)
   , reject(FETCH_ASSIGNMENT))
@@ -23,7 +23,18 @@ const assignments = handleActions({
   [resolve(DELETE_ASSIGNMENT)]: (state, { meta }) => differenceBy(state, meta, 'id'),
 }, [])
 
+const setAssignmentId = handleActions({
+  [SET_ASSIGNMENT_ID]: (state, { payload }) => ({...state, selectAssignmentId: payload}),
+},[])
+
+
+const changeModal = handleActions({
+  [SHOW_DELETE_MODAL]: (state) => ({...state, showDeleteModal: !state.showDeleteModal}),
+},false)
+
 export default combineReducers({
   loading,
   assignments,
+  setAssignmentId,
+  changeModal,
 })

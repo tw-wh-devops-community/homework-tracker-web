@@ -5,12 +5,15 @@ import api from '../api/api'
 export const FETCH_ASSIGNMENT = 'ASSIGNMENT/FETCH_ASSIGNMENT'
 export const DELETE_ASSIGNMENT = 'ASSIGNMENT/DELETE_ASSIGNMENT'
 export const CREATE_ASSIGNMENT = 'ASSIGNMENT/CREATE_ASSIGNMENT'
+export const SET_ASSIGNMENT_ID = 'ASSIGNMENT/SET_ASSIGNMENT_ID'
+export const SHOW_DELETE_MODAL = 'ASSIGNMENT/SHOW_DELETE_MODAL'
 
 export const fetchAssignments = createAction(FETCH_ASSIGNMENT, () => api.get('/assignments'))
 
-export const deleteAssignment = createAction(DELETE_ASSIGNMENT, assignmentId => api.delete(`/assignments/${assignmentId}`), assignmentId => [{ id: assignmentId }])
+export const deleteAssignment = createAction(DELETE_ASSIGNMENT, assignmentId =>
+  api.delete(`/assignments/${assignmentId}`), assignmentId => [{ id: assignmentId }])
 
-export const finishedAssignment = assignmentId => (
+export const finishAssignment = assignmentId => (
   (dispatch) => {
     api.put('/assignments',
       {
@@ -23,4 +26,8 @@ export const finishedAssignment = assignmentId => (
   }
 )
 export const createAssignment = createAction(CREATE_ASSIGNMENT, () => api.post('/assignments'))
+
+export const setSelectAssignmentId = createAction(SET_ASSIGNMENT_ID, assignmentId => assignmentId)
+
+export const showDeleteModal = createAction(SHOW_DELETE_MODAL)
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Assignments from './Assignments'
 import NewAssignment from './NewAssignment'
+import DeleteAssignment from './DeleteAssignment'
+import { showDeleteModal } from './actions'
 import './css/admin.css'
 
 export class Admin extends Component {
@@ -24,9 +27,14 @@ export class Admin extends Component {
         </div>
         <Assignments />
         { showModal && <NewAssignment onCancel={this.changeShowModal} /> }
+        { this.props.showDeleteModal && <DeleteAssignment /> }
       </div>
     )
   }
 }
 
-export default Admin
+const mapStateToProps = state => ({
+  showDeleteModal: state.assignment.changeModal.showDeleteModal,
+})
+
+export default connect(mapStateToProps, showDeleteModal )(Admin)

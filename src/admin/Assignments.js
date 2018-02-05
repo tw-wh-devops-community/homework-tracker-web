@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
 import moment from 'moment'
 import { AssignmentShape } from '../shared/shape'
-import { fetchAssignments, deleteAssignment, finishedAssignment } from './actions'
+import { fetchAssignments, setSelectAssignmentId, finishAssignment, showDeleteModal } from './actions'
 import './css/assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
@@ -14,6 +14,11 @@ const assignmentStatus = { finished: '已完成', ongoing: '进行中', overdue:
 export class Assignments extends Component {
   componentWillMount() {
     this.props.fetchAssignments()
+  }
+
+  changeShowDeleteModal = (selectAssignmentId) => {
+    this.props.showDeleteModal()
+    this.props.setSelectAssignmentId(selectAssignmentId)
   }
 
   dateFormat = date => (date ? moment(date).format('YYYY-MM-DD HH:mm:ss') : '')
@@ -35,9 +40,9 @@ export class Assignments extends Component {
         <div className='table-column'>{this.dateFormat(assignment.finished_date)}</div>
         <div className='table-column'>{assignmentStatus[assignment.status]}</div>
         <div className='table-column'>
-          <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.props.finishedAssignment(assignment.id)} />
+          <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.props.finishAssignment(assignment.id)} />
           <i className='fa fa-edit table-editIcon' />
-          <i className='fa fa-trash table-editIcon' role='presentation' onClick={() => this.props.deleteAssignment(assignment.id)} />
+          <i className='fa fa-trash table-editIcon' role='presentation' onClick={() => this.changeShowDeleteModal(assignment.id)} />
         </div>
       </div>
     )
@@ -65,8 +70,8 @@ export class Assignments extends Component {
 Assignments.propTypes = {
   assignments: PropTypes.arrayOf(AssignmentShape),
   fetchAssignments: PropTypes.func.isRequired,
-  deleteAssignment: PropTypes.func.isRequired,
-  finishedAssignment: PropTypes.func.isRequired,
+  finishAssignment: PropTypes.func.isRequired,
+  setSelectAssignmentId: PropTypes.func.isRequired,
 }
 
 Assignments.defaultProps = {
@@ -78,4 +83,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps,
-  { fetchAssignments, deleteAssignment, finishedAssignment })(Assignments)
+  { fetchAssignments, setSelectAssignmentId, finishAssignment,showDeleteModal })(Assignments)
