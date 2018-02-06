@@ -36,12 +36,12 @@ const assignments = handleActions({
   [resolve(DELETE_ASSIGNMENT)]: (state, { meta }) => differenceBy(state, meta, 'id'),
 }, [])
 
-const interviewers = handleActions({
+const interviewerOptions = handleActions({
    [resolve(FETCH_INTERVIEWERS)]: (state, { payload }) => payload.map(interviewer => (
      { value: interviewer.employee_id, label: interviewer.name })),
 }, [])
 
-const roles = handleActions({
+const roleOptions = handleActions({
   [resolve(FETCH_ROLES)]: (state, { payload }) => payload.map(role => (
     { value: role, label: role })),
 }, [])
@@ -57,8 +57,8 @@ const changeModal = handleActions({
 }, false)
 
 export default combineReducers({
-  roles,
-  interviewers,
+  roleOptions,
+  interviewerOptions,
   loading,
   assignments,
   setAssignmentId,

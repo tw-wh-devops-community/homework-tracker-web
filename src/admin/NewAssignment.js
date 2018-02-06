@@ -14,7 +14,7 @@ class NewAssignment extends Component {
   state = {
     candidateName: '',
     jobRole: '',
-    value: [],
+    interviewerIdsValue: '',
     selectedOption: '',
     assignedDate: moment(),
     deadlineDate: moment().add(3, 'days'),
@@ -33,8 +33,8 @@ class NewAssignment extends Component {
     this.setState({ deadlineDate: moment(time) })
   }
 
-  handleInterviewersChange = (value) => {
-    this.setState({ value })
+  handleInterviewersChange = (interviewerIdsValue) => {
+    this.setState({ interviewerIdsValue })
   }
 
   handleRoleChange = (jobRole) => {
@@ -48,8 +48,8 @@ class NewAssignment extends Component {
   }
 
   create = () => {
-    const { value, candidateName, jobRole, assignedDate, deadlineDate } = this.state
-    const interviewerIds = value.split(',')
+    const { interviewerIdsValue, candidateName, jobRole, assignedDate, deadlineDate } = this.state
+    const interviewerIds = interviewerIdsValue.split(',')
     this.props.createAssignment({
       interviewerIds,
       candidateName,
@@ -61,8 +61,8 @@ class NewAssignment extends Component {
   }
 
   render() {
-    const { onCancel, interviewers, roles } = this.props
-    const { value, jobRole, assignedDate, deadlineDate } = this.state
+    const { onCancel, interviewerOptions, roleOptions } = this.props
+    const { interviewerIdsValue, jobRole, assignedDate, deadlineDate } = this.state
 
     return (
       <div className='container'>
@@ -73,7 +73,7 @@ class NewAssignment extends Component {
           <div className='row'><span className='field'>面试岗位</span>
             <Select
               className='input'
-              options={roles}
+              options={roleOptions}
               onChange={this.handleRoleChange}
               placeholder="job role"
               simpleValue
@@ -83,14 +83,14 @@ class NewAssignment extends Component {
           <div className='row'><span className='field'>面试官</span>
             <Select
               className='input'
-              options={interviewers}
+              options={interviewerOptions}
               multi
               removeSelected
               closeOnSelect={false}
               simpleValue
               onChange={this.handleInterviewersChange}
               placeholder="Select the interviewers"
-              value={value}
+              value={interviewerIdsValue}
             />
           </div>
           <div className='row'><span className='field'>分配日期</span>
@@ -126,8 +126,8 @@ class NewAssignment extends Component {
 }
 
 NewAssignment.propTypes = {
-  roles: PropTypes.arrayOf(RoleOptionShape),
-  interviewers: PropTypes.arrayOf(InterviewerOptionShape),
+  roleOptions: PropTypes.arrayOf(RoleOptionShape),
+  interviewerOptions: PropTypes.arrayOf(InterviewerOptionShape),
   onCancel: PropTypes.func.isRequired,
   createAssignment: PropTypes.func.isRequired,
   fetchInterviewers: PropTypes.func.isRequired,
@@ -135,12 +135,12 @@ NewAssignment.propTypes = {
 }
 
 NewAssignment.defaultProps = {
-  interviewers: [],
-  roles: [],
+  interviewerOptions: [],
+  roleOptions: [],
 }
 const mapStateToProps = state => ({
-    interviewers: state.assignment.interviewers,
-  roles: state.assignment.roles,
+  interviewerOptions: state.assignment.interviewerOptions,
+  roleOptions: state.assignment.roleOptions,
   })
 
 
