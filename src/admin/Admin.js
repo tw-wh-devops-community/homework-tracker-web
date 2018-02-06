@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Assignments from './Assignments'
+import EditAssignment from './EditAssignment'
 import NewAssignment from './NewAssignment'
 import DeleteAssignment from './DeleteAssignment'
 import FinishAssignment from './FinishAssignment'
@@ -30,6 +31,7 @@ export class Admin extends Component {
         { showModal && <NewAssignment onCancel={this.changeShowModal} /> }
         { this.props.showDeleteModal && <DeleteAssignment /> }
         { this.props.showFinishModal && <FinishAssignment /> }
+        { this.props.showEditModal && <EditAssignment /> }
       </div>
     )
   }
@@ -38,15 +40,18 @@ export class Admin extends Component {
 Admin.propTypes = {
   showDeleteModal: PropTypes.bool,
   showFinishModal: PropTypes.bool,
+  showEditModal: PropTypes.bool,
 }
 
 Admin.defaultProps = {
   showDeleteModal: false,
   showFinishModal: false,
+  showEditModal: false,
 }
 
 const mapStateToProps = state => ({
   showDeleteModal: state.assignment.changeModal.showDeleteModal,
+  showEditModal: state.assignment.changeModal.showEditModal,
   showFinishModal: state.assignment.changeModal.showFinishModal,
 })
 

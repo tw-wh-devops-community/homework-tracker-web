@@ -8,6 +8,7 @@ export const DELETE_ASSIGNMENT = 'ASSIGNMENT/DELETE_ASSIGNMENT'
 export const SET_ASSIGNMENT_ID = 'ASSIGNMENT/SET_ASSIGNMENT_ID'
 export const SHOW_DELETE_MODAL = 'ASSIGNMENT/SHOW_DELETE_MODAL'
 export const SHOW_FINISH_MODAL = 'ASSIGNMENT/SHOW_FINISH_MODAL'
+export const SHOW_EDIT_MODAL = 'ASSIGNMENT/SHOW_EDIT_MODAL'
 
 export const fetchInterviewers = createAction(FETCH_INTERVIEWERS, () => api.get('/interviewers'))
 export const fetchRoles = createAction(FETCH_ROLES, () => api.get('/roles'))
@@ -38,9 +39,20 @@ export const createAssignment = data => (
   }
 )
 
+export const updateAssignment = data => (
+  (dispatch) => {
+    api.put('/assignments',
+      data).then(() =>
+      dispatch(fetchAssignments()),
+    )
+  }
+)
+
 export const setSelectAssignmentId = createAction(SET_ASSIGNMENT_ID, assignmentId => assignmentId)
 
 export const showDeleteModal = createAction(SHOW_DELETE_MODAL)
 
 export const showFinishModal = createAction(SHOW_FINISH_MODAL)
+
+export const showEditModal = createAction(SHOW_EDIT_MODAL)
 

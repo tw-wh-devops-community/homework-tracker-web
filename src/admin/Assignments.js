@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
 import dateFormat from '../utilities/dateFormat'
 import { AssignmentShape } from '../shared/shape'
-import { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal } from './actions'
+import { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal, showEditModal } from './actions'
 import './Assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
@@ -23,6 +23,11 @@ export class Assignments extends Component {
 
   changeShowFinishModal = (selectAssignmentId) => {
     this.props.showFinishModal()
+    this.props.setSelectAssignmentId(selectAssignmentId)
+  }
+
+  changeShowEditModal = (selectAssignmentId) => {
+    this.props.showEditModal()
     this.props.setSelectAssignmentId(selectAssignmentId)
   }
 
@@ -44,7 +49,7 @@ export class Assignments extends Component {
         <div className='table-column'>{assignmentStatus[assignment.status]}</div>
         <div className='table-column'>
           <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.changeShowFinishModal(assignment.id)} />
-          <i className='fa fa-edit table-editIcon' />
+          <i className='fa fa-edit table-editIcon' role='presentation' onClick={() => this.changeShowEditModal(assignment.id)} />
           <i className='fa fa-trash table-editIcon' role='presentation' onClick={() => this.changeShowDeleteModal(assignment.id)} />
         </div>
       </div>
@@ -75,6 +80,7 @@ Assignments.propTypes = {
   fetchAssignments: PropTypes.func.isRequired,
   showFinishModal: PropTypes.func.isRequired,
   showDeleteModal: PropTypes.func.isRequired,
+  showEditModal: PropTypes.func.isRequired,
   setSelectAssignmentId: PropTypes.func.isRequired,
 }
 
@@ -87,4 +93,9 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps,
-  { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal })(Assignments)
+  { fetchAssignments,
+    setSelectAssignmentId,
+    showFinishModal,
+    showDeleteModal,
+    showEditModal,
+  })(Assignments)

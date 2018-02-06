@@ -8,7 +8,9 @@ import { FETCH_ASSIGNMENT,
   FETCH_ROLES,
   SET_ASSIGNMENT_ID,
   SHOW_DELETE_MODAL,
-  SHOW_FINISH_MODAL }
+  SHOW_FINISH_MODAL,
+  SHOW_EDIT_MODAL,
+}
 from './actions'
 
 const REQUEST_ASSIGNMENT_FINISHED = combineActions(resolve(FETCH_ASSIGNMENT)
@@ -54,6 +56,7 @@ const setAssignmentId = handleActions({
 const changeModal = handleActions({
   [SHOW_DELETE_MODAL]: state => ({ ...state, showDeleteModal: !state.showDeleteModal }),
   [SHOW_FINISH_MODAL]: state => ({ ...state, showFinishModal: !state.showFinishModal }),
+  [SHOW_EDIT_MODAL]: state => ({ ...state, showEditModal: !state.showEditModal }),
 }, false)
 
 export default combineReducers({
