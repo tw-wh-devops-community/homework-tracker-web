@@ -5,7 +5,6 @@ export const FETCH_INTERVIEWERS = 'ASSIGNMENT/FETCH_INTERVIEWERS'
 export const FETCH_ROLES = 'ASSIGNMENT/FETCH_ROLES'
 export const FETCH_ASSIGNMENT = 'ASSIGNMENT/FETCH_ASSIGNMENT'
 export const DELETE_ASSIGNMENT = 'ASSIGNMENT/DELETE_ASSIGNMENT'
-export const CREATE_ASSIGNMENT = 'ASSIGNMENT/CREATE_ASSIGNMENT'
 export const SET_ASSIGNMENT_ID = 'ASSIGNMENT/SET_ASSIGNMENT_ID'
 export const SHOW_DELETE_MODAL = 'ASSIGNMENT/SHOW_DELETE_MODAL'
 export const SHOW_FINISH_MODAL = 'ASSIGNMENT/SHOW_FINISH_MODAL'
@@ -29,7 +28,15 @@ export const finishAssignment = (assignmentId, finishTime) => (
     )
   }
 )
-export const createAssignment = createAction(CREATE_ASSIGNMENT, data => api.post('/assignments', data))
+
+export const createAssignment = data => (
+  (dispatch) => {
+    api.post('/assignments',
+      data).then(() =>
+      dispatch(fetchAssignments()),
+    )
+  }
+)
 
 export const setSelectAssignmentId = createAction(SET_ASSIGNMENT_ID, assignmentId => assignmentId)
 
