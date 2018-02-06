@@ -5,6 +5,7 @@ import { pending, resolve, reject } from '../utilities/actionConst'
 import { FETCH_ASSIGNMENT,
   DELETE_ASSIGNMENT,
   FETCH_INTERVIEWERS,
+  FETCH_ROLES,
   SET_ASSIGNMENT_ID,
   SHOW_DELETE_MODAL,
   SHOW_FINISH_MODAL }
@@ -22,6 +23,7 @@ const DELETE_ASSIGNMENT_FINISHED = combineActions(resolve(DELETE_ASSIGNMENT)
 const loading = handleActions({
   [pending(FETCH_ASSIGNMENT)]: () => true,
   [pending(FETCH_INTERVIEWERS)]: () => true,
+  [pending(FETCH_ROLES)]: () => true,
   [pending(DELETE_ASSIGNMENT)]: () => true,
   [REQUEST_ASSIGNMENT_FINISHED]: () => false,
   [REQUEST_INTERVIEWERS_FINISHED]: () => false,
@@ -39,6 +41,11 @@ const interviewers = handleActions({
      { value: interviewer.employee_id, label: interviewer.name })),
 }, [])
 
+const roles = handleActions({
+  [resolve(FETCH_ROLES)]: (state, { payload }) => payload.map(role => (
+    { value: role, label: role })),
+}, [])
+
 const setAssignmentId = handleActions({
   [SET_ASSIGNMENT_ID]: (state, { payload }) => ({ ...state, selectAssignmentId: payload }),
 }, [])
@@ -50,6 +57,7 @@ const changeModal = handleActions({
 }, false)
 
 export default combineReducers({
+  roles,
   interviewers,
   loading,
   assignments,
