@@ -12,6 +12,7 @@ import './NewAssignment.css'
 
 class NewAssignment extends Component {
   state = {
+    validateFailed: false,
     candidateName: '',
     jobRole: '',
     interviewerIdsValue: '',
@@ -47,7 +48,16 @@ class NewAssignment extends Component {
     })
   }
 
+  validate = () => {
+    const { interviewerIdsValue, candidateName, jobRole, assignedDate, deadlineDate } = this.state
+    return !!interviewerIdsValue && !!candidateName && !!jobRole && !!assignedDate && !!deadlineDate
+  }
+
   create = () => {
+    if (!this.validate()) {
+      this.setState({ validateFailed: true })
+      return
+    }
     const { interviewerIdsValue, candidateName, jobRole, assignedDate, deadlineDate } = this.state
     const interviewerIds = interviewerIdsValue.split(',')
     this.props.createAssignment({
@@ -75,7 +85,7 @@ class NewAssignment extends Component {
               className='input'
               options={roleOptions}
               onChange={this.handleRoleChange}
-              placeholder="job role"
+              placeholder="请选择面试岗位"
               simpleValue
               value={jobRole}
             />
@@ -89,7 +99,7 @@ class NewAssignment extends Component {
               closeOnSelect={false}
               simpleValue
               onChange={this.handleInterviewersChange}
-              placeholder="Select the interviewers"
+              placeholder="请选择面试官"
               value={interviewerIdsValue}
             />
           </div>
@@ -98,7 +108,7 @@ class NewAssignment extends Component {
               className='input'
               showTime
               format="YYYY-MM-DD HH:mm:ss"
-              placeholder="Select Time"
+              placeholder="请设定分配日期"
               value={assignedDate}
               onChange={time => this.setAssignedDate(time)}
               onOk={time => this.setAssignedDate(time)}
@@ -109,12 +119,14 @@ class NewAssignment extends Component {
               className='input'
               showTime
               format="YYYY-MM-DD HH:mm:ss"
-              placeholder="Select Time"
+              placeholder="请设定截止日期"
               value={deadlineDate}
               onChange={time => this.setDeadlineDate(time)}
               onOk={time => this.setDeadlineDate(time)}
             />
           </div>
+          { this.state.validateFailed &&
+            <p className="reminder">请完成所有项的输入</p>}
           <div className='button-container'>
             <button className='button cancel' onClick={onCancel}>取消</button>
             <button className='button confirm' onClick={this.create}>确认</button>

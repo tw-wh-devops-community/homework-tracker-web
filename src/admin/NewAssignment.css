@@ -15,7 +15,7 @@
 
 .modal-container {
   width: 650px;
-  height: 520px;
+  height: 580px;
   border-radius: 5px;
   background-color: #ACACAC;
 }
@@ -35,7 +35,7 @@
   align-items: center;
   -ms-flex-pack: center;
   justify-content: flex-end;
-  padding-right: 180px;
+  padding-right: 120px;
 }
 
 .field {
@@ -46,7 +46,7 @@
 }
 
 .input {
-  width: 240px;
+  width: 320px;
   height: 40px;
   border-radius: 4px;
   font-size: 18px;
@@ -92,3 +92,11 @@
   display: flex;
   justify-content: center;
 }
+/*override the third party style*/
+.ant-input{
+  height: 38px;
+}
+.Select-control{
+  height: 38px;
+}
+
