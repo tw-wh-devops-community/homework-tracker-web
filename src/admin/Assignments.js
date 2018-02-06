@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
-import moment from 'moment'
+import dateFormat from '../utilities/dateFormat'
 import { AssignmentShape } from '../shared/shape'
 import { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal } from './actions'
 import './Assignments.css'
@@ -26,8 +26,6 @@ export class Assignments extends Component {
     this.props.setSelectAssignmentId(selectAssignmentId)
   }
 
-  dateFormat = date => (date ? moment(date).format('YYYY-MM-DD HH:mm:ss') : '')
-
   renderItem = (assignment, index) => {
     const tableValue = classNames(`table-row ${assignment.status}`, {
       'highlight-item': index % 2 === 0,
@@ -40,9 +38,9 @@ export class Assignments extends Component {
         <div className='table-column'>{assignment.interviewer_name}</div>
         <div className='table-column'>{assignment.candidate}</div>
         <div className='table-column'>{assignment.job_role}</div>
-        <div className='table-column'>{this.dateFormat(assignment.assigned_date)}</div>
-        <div className='table-column'>{this.dateFormat(assignment.deadline_date)}</div>
-        <div className='table-column'>{this.dateFormat(assignment.finished_date)}</div>
+        <div className='table-column'>{dateFormat(assignment.assigned_date)}</div>
+        <div className='table-column'>{dateFormat(assignment.deadline_date)}</div>
+        <div className='table-column'>{dateFormat(assignment.finished_date)}</div>
         <div className='table-column'>{assignmentStatus[assignment.status]}</div>
         <div className='table-column'>
           <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.changeShowFinishModal(assignment.id)} />

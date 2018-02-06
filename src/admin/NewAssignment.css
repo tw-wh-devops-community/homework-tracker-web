@@ -82,6 +82,13 @@
 .modal-delete {
   height: 240px;
 }
+
 .modal-finish {
   height: 300px;
+}
+
+.reminder {
+  color: red;
+  display: flex;
+  justify-content: center;
 }
