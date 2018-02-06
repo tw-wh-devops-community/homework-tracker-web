@@ -19,3 +19,8 @@ export const InterviewerShape = PropTypes.shape({
   created_date: PropTypes.string,
 })
 
+export const InterviewerOptionShape = PropTypes.shape({
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+})
+
