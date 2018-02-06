@@ -25,11 +25,15 @@ class EditAssignment extends Component {
   }
 
   setAssignedDate = (time) => {
-    this.setState({ assignedDate: moment(time), deadlineDate: moment(time).add(3, 'days') })
+    if (time) {
+      this.setState({ assignedDate: moment(time), deadlineDate: moment(time).add(3, 'days') })
+    } else {
+      this.setState({ assignedDate: null })
+    }
   }
 
   setDeadlineDate = (time) => {
-    this.setState({ deadlineDate: moment(time) })
+    this.setState({ deadlineDate: time ? moment(time) : null })
   }
 
   handleInterviewersChange = (interviewerIdValue) => {
