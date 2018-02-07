@@ -1,29 +1,28 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import './List.css'
-import SideList from './SideList'
+import List from './List'
+import Group from './Group'
+import './AssigmentPage.css'
+import { fetchAssignments } from './actions'
 
-export default class AssignmentPage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { height: window.innerHeight }
+export class AssignmentPage extends Component {
+  componentWillMount() {
+    this.props.fetchAssignments()
   }
 
   render() {
-    const { title } = this.props
     return (
-      <div className="content" style={{ height: `${this.state.height}px` }}>
-        <div className="title">{title}</div>
-        <div className="content-container">
-          <div className="side-list"><SideList /></div>
-          <div className="main-content" />
-        </div>
+      <div className="content" >
+        <List />
+        <Group />
       </div>
     )
   }
 }
 
 AssignmentPage.propTypes = {
-  title: PropTypes.string.isRequired,
+  fetchAssignments: PropTypes.func.isRequired,
 }
 
+export default connect(null, { fetchAssignments })(AssignmentPage)

@@ -1,75 +1,10 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-.container-1 {
-    background: linear-gradient(90deg, #BF554B, #CC7E53);
-}
-.container-2 {
-    background: linear-gradient(135deg, #BF554B, #CC7E53);
-}
-.container-3 {
-    background: linear-gradient(180deg, #BF554B, #CC7E53);
-}
-.container-4 {
-    background: linear-gradient(225deg, #BF554B, #CC7E53);
-}
-.content {
+.list {
+    margin: 70px 60px;
     display: flex;
-    flex-direction: column;
-}
-
-.title {
-    color: #ffffff;
-    font-size: 30px;
-    font-weight: 300;
-    text-align: center;
-    padding: 40px 0;
-}
-
-.content-container {
-    display: flex;
-    flex-direction: row;
-    padding: 50px;
-}
-
-.side-list {
-    width: 400px;
-    height: 500px;
-    background-color: white;
-}
-
-.main-content {
-    display: flex;
-    flex: 1;
-    margin-left: 30px;
-    background-color: white;
-}
-
-.interviewer-item {
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.interviewer-name {
-    margin-right: 30px;
-    font-weight: 700;
-    font-size: 20px;
-}
-
-.interviewer-role {
-    margin-left: 30px;
-    font-size: 12px;
-}
-
-.highlight-item {
-    background-color: #FAF6F7;
-}
-
-.selected-item {
-    color: #A5001F;
+    justify-content: space-around;
+    width: 50%;
+    min-width: 400px;
+    border-radius: 20px;
+    background-color: #edc674;
+    border: solid 8px #6a7256;
 }

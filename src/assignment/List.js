@@ -1,27 +1,18 @@
-import React from 'react'
-import Slider from 'react-slick'
-import AssignmentPage from './AssignmentPage'
+import React, { Component } from 'react'
 import './List.css'
+import Bubble from './Bubble'
 
-const settings = {
-  dots: false,
-  infinite: true,
-  autoplaySpeed: 3000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  vertical: true,
-  autoplay: true,
+const listTitles = { inOneHour: '崽啊, 24小时内赶紧把作业看了!', overdue: '崽啊, 赶紧把超期的作业看了吧!' }
+// eslint-disable-next-line react/prefer-stateless-function
+export class List extends Component {
+  render() {
+    return (
+      <div className="list" >
+        <div className="list-title">{ listTitles.inOneHour }</div>
+        <Bubble />
+      </div>
+    )
+  }
 }
 
-const Assignments = () => (
-  <Slider {...settings}>
-    <div className="container-1">
-      <AssignmentPage title="24小时内需处理完的作业名单（2018年1月）" />
-    </div>
-    <div className="container-2">
-      <AssignmentPage title="已经超期的作业名单（2018年1月）" />
-    </div>
-  </Slider>
-)
-
-export default Assignments
+export default List
