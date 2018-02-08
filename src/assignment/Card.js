@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { BulletinShape } from '../shared/shape'
 
 export class Card extends Component {
   buildCard = assignment => (
@@ -19,6 +20,12 @@ export class Card extends Component {
   }
 }
 Card.propTypes = {
-  showAssignments: PropTypes.arrayOf.isRequired,
+  showAssignments: PropTypes.arrayOf(BulletinShape),
 }
+
+Card.defaultProps = {
+  showAssignments: [],
+}
+
+
 export default Card

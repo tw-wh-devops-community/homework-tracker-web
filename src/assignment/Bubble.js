@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as d3 from 'd3'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { BulletinShape } from '../shared/shape'
 
 export class Bubble extends Component {
   componentDidUpdate() {
@@ -36,7 +37,7 @@ export class Bubble extends Component {
       .filter(d => !d.children)
       .append('g')
       .attr('class', 'node')
-      .attr('transform', d => `translate( + ${d.x} + , + ${d.y} + )`)
+      .attr('transform', d => `translate(${d.x} , ${d.y})`)
 
     node.append('title')
       .text(d => d.interviewer_name)
@@ -59,7 +60,11 @@ export class Bubble extends Component {
 }
 
 Bubble.propTypes = {
-  assignments: PropTypes.arrayOf.isRequired,
+  assignments: PropTypes.arrayOf(BulletinShape),
+}
+
+Bubble.defaultProps = {
+  assignments: [],
 }
 
 const mapStateToProps = state => ({

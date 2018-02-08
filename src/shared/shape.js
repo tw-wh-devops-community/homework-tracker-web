@@ -29,3 +29,10 @@ export const RoleOptionShape = PropTypes.shape({
   label: PropTypes.string.isRequired,
 })
 
+export const BulletinShape = PropTypes.shape({
+  interviewer_employee_id: PropTypes.string.isRequired,
+  interviewer_name: PropTypes.string.isRequired,
+  interviewer_profile: PropTypes.string.isRequired,
+  interviewer_role: PropTypes.string.isRequired,
+  time_records: PropTypes.array.isRequired,
+})

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Card from './Card'
 import './Group.css'
+import { BulletinShape } from '../shared/shape'
 
 export class Group extends Component {
   state = {
@@ -40,8 +41,13 @@ export class Group extends Component {
 }
 
 Group.propTypes = {
-  assignments: PropTypes.arrayOf.isRequired,
+  assignments: PropTypes.arrayOf(BulletinShape),
 }
+
+Group.defaultProps = {
+  assignments: [],
+}
+
 
 const mapStateToProps = state => ({
   assignments: state.assignment.assignments,
