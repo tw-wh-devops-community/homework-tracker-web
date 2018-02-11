@@ -1,32 +1,137 @@
-.inreaday-value {
-    display: grid;
-    width: 90%;
-    height: 80%;
-    grid-template-columns: repeat(8, 1fr);
+.intraday-group {
+    width: 96em;
+    margin: 3em;
+    border-radius: 16px;
 }
 
-.interviewer_profile img{
+.intraday-title {
+    height: 8em;
+    display: flex;
+    border-radius: 4px 4px 0 0;
+    background-color: #eec677;
+    border: solid 3px #545c50;
+    border-bottom-width: 0;
+    justify-content: center;
+    padding-top: 2em;
+}
+
+.intraday-value {
+    height: 40em;
+    border-radius: 0 0 4px 4px;
+    background-color: #ffe09d;
+    border: solid 3px #545c50;
+}
+
+.intraday-card {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 36em;
+    margin: 0 4em;
+}
+.intraday-footer {
+    height: 3em;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.interviewer-profile img{
     width: 110px;
     margin-left: auto;
     display: block;
     margin-right: auto;
+    margin-top: 2em;
 }
 
 .card {
     display: flex;
     flex-direction: column;
+    height: 14em;
+    border-radius: 20px;
+    border: solid 3px #545c50;
+    margin: 4em 1em 0 1em;
+    position: relative;
 }
 
-
-.inreaday-group {
-    margin: 70px 60px;
-    width: 90%;
-    min-width: 1000px;
-    border-radius: 16px;
-    background-color: #edc674;
-    border: solid 6px #6a7256;
+.crab {
+    width: 7em;
+    height: 5em;
 }
-.inreaday-title {
-    height: 15%;
-    margin-top: 20px;
+
+.hamster {
+    width: 6em;
+    height: 5em;
+}
+
+.frog1 {
+    height: 5em;
+    width: 6em;
+}
+
+.frog2 {
+    height: 5em;
+    width: 7em;
+}
+
+.intraday-title-text-1 {
+    position: absolute;
+    font-size: 3.5em;
+    color: #ffffff;
+    justify-content: center;
+    display: flex;
+    width: 4em;
+    z-index: 2;
+}
+
+.intraday-highlight {
+    width: 14em;
+    position: relative;
+}
+
+.intraday-title-text-2 {
+    width: 8.5em;
+    font-size: 3.5em;
+    font-weight: 600;
+    color: #fdfdfd;
+    -webkit-text-stroke: 1px #685d54;
+
+}
+
+.rectangle {
+    width: 11em;
+    height: 5em;
+    bottom: 1em;
+    left: 2em;
+    position: absolute;
+    z-index: 1;
+    background: #ed9924;
+}
+
+.interviewer-name {
+    height: 1.5em;
+    bottom: 6.1em;
+    left: 1.2em;
+    position: absolute;
+    background-color: #ffe09d;
+    width: 5em;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.time-highlight {
+    font-size: 2em;
+}
+
+.time-records {
+    width: 13em;
+    height: 2.5em;
+    border-radius: 100px;
+    background-color: #ffffff;
+    border: solid 2px #545c50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5em 1em;
 }

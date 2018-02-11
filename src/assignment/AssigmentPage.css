@@ -1,8 +1,5 @@
-body {
-    background: url("./images/background.png") no-repeat;
-}
-
 .content {
     display: flex;
+    background: url("./images/background.png") no-repeat;
 }
 

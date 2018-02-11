@@ -7,7 +7,7 @@ import './AssigmentPage.css'
 import { BulletinShape } from '../shared/shape'
 import { showPageType, fetchAssignments } from './actions'
 
-const groupCardCount = 16
+const groupCardCount = 10
 export class AssignmentPage extends Component {
   state = {
     index: 0,
@@ -18,18 +18,18 @@ export class AssignmentPage extends Component {
     this.props.fetchAssignments(pageType)
   }
 
-  // componentDidMount() {
-  //   setInterval(() => {
-  //     this.setIndex()
-  //   }, 5000)
-  // }
+  componentDidMount() {
+    setInterval(() => {
+      this.setIndex()
+    }, 5000)
+  }
 
   setIndex = () => {
     const assignments = this.props.assignments
 
-    if (this.state.index + groupCardCount < assignments.length) {
+    if ((this.state.index + 1) * groupCardCount < assignments.length) {
       this.setState({
-        index: this.state.index + groupCardCount,
+        index: this.state.index + 1,
       })
     } else {
       this.props.showPageType(this.props.pageType)
@@ -41,13 +41,27 @@ export class AssignmentPage extends Component {
   }
 
   render() {
-    const showAssignments = this.props.assignments
-    const pageType = 'overdue'
+    const currentIndex = this.state.index * groupCardCount
+    const nextIndex = (this.state.index + 1) * groupCardCount
+    const showAssignments = this.props.assignments.slice(currentIndex, nextIndex)
+
+    const pageType = this.props.pageType
+    const totalPage = Math.ceil(showAssignments.length / groupCardCount)
 
     return (
       <div className="content" >
-        {pageType === 'intraday' && <Intraday showAssignments={showAssignments.slice(this.state.index, this.state.index + groupCardCount)} />}
-        {pageType === 'overdue' && <Overdue showAssignments={showAssignments.slice(this.state.index, this.state.index + groupCardCount)} />}
+        {pageType === 'intraday' &&
+        <Intraday
+          showAssignments={showAssignments}
+          totalPage={totalPage}
+          currentPage={currentIndex + 1}
+        />}
+        {pageType === 'overdue' &&
+        <Overdue
+          showAssignments={showAssignments}
+          totalPage={totalPage}
+          currentPage={currentIndex + 1}
+        />}
       </div>
     )
   }
