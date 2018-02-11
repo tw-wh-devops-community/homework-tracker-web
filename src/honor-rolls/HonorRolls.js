@@ -5,7 +5,7 @@ import './HonorRolls.css'
 import { HonorRollShape } from '../shared/shape'
 import { fetchHonorRollsSortBySpeed, fetchHonorRollsSortByQuantity } from './actions'
 
-const imageAPI = 'http://127.0.0.1:5678/'
+const imageAPI = 'http://54.223.64.0:5678/'
 
 export class HonorRolls extends Component {
   componentWillMount() {
@@ -18,13 +18,19 @@ export class HonorRolls extends Component {
       `${imageAPI}${item.interviewer_profile}` : `${imageAPI}image/default`
 
     const displayValye = type === 'speed' ? item.avg_duration : item.count
+    const displayPre = type === 'speed' ? '平均1份作业' : '本月共看了'
+    const displaySuffix = type === 'speed' ? '小时' : '份'
     return (
       <div className="card" key={item.interviewer_employee_id}>
         <div className="interviewer-name">{item.interviewer_name}</div>
         <div className="interviewer_profile">
           <img src={interviewerProfileUrl} alt="" />
         </div>
-        <div className="time-records">{displayValye}</div>
+        <div className="time-records">
+          <span>{displayPre}</span>
+          <span className="time-highlight">{displayValye}</span>
+          <span>{displaySuffix}</span>
+        </div>
       </div>
     )
   }
@@ -33,15 +39,17 @@ export class HonorRolls extends Component {
     const { honorRollsSortBySpeed, honorRollsSortByQuantity } = this.props
     return (
       <div className="content" >
-        <div>
-          <div>
-            <div className="">光荣榜</div>
+        <div className="honor-rolls-container">
+          <div className="honor-rolls-title">
+            <div className="honor-rolls-title-text">光荣榜</div>
           </div>
-          <div>
-            {honorRollsSortBySpeed.map(item => this.buildCard(item, 'speed'))}
-          </div>
-          <div>
-            {honorRollsSortByQuantity.map(item => this.buildCard(item, 'quantity'))}
+          <div className="honor-rolls-content-wrapper">
+            <div className="honor-rolls-content">
+              {honorRollsSortBySpeed.map(item => this.buildCard(item, 'speed'))}
+            </div>
+            <div className="honor-rolls-content">
+              {honorRollsSortByQuantity.map(item => this.buildCard(item, 'quantity'))}
+            </div>
           </div>
         </div>
       </div>
