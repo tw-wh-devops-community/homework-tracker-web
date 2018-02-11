@@ -36,3 +36,13 @@ export const BulletinShape = PropTypes.shape({
   interviewer_role: PropTypes.string.isRequired,
   time_records: PropTypes.array.isRequired,
 })
+
+export const HonorRollShape = PropTypes.shape({
+  interviewer_employee_id: PropTypes.string.isRequired,
+  interviewer_name: PropTypes.string.isRequired,
+  interviewer_profile: PropTypes.string,
+  interviewer_role: PropTypes.string.isRequired,
+  avg_duration: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+})
+
