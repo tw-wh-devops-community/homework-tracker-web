@@ -1,0 +1,32 @@
+.inreaday-value {
+    display: grid;
+    width: 90%;
+    height: 80%;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.interviewer_profile img{
+    width: 110px;
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.inreaday-group {
+    margin: 70px 60px;
+    width: 90%;
+    min-width: 1000px;
+    border-radius: 16px;
+    background-color: #edc674;
+    border: solid 6px #6a7256;
+}
+.inreaday-title {
+    height: 15%;
+    margin-top: 20px;
+}
