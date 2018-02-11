@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import { BulletinShape } from '../shared/shape'
 import './Overdue.css'
 
+const crab = require('./images/crab.png')
+const hamster = require('./images/hamster.png')
+const frog1 = require('./images/frog1.png')
+const frog2 = require('./images/frog2.png')
+
 const imageAPI = 'http://54.223.64.0:5678/'
 export class Overdue extends Component {
   buildCard = (assignment) => {
@@ -24,7 +29,17 @@ export class Overdue extends Component {
     const showAssignments = this.props.showAssignments
     return (
       <div className="overdue-group">
-        <div className="overdue-title" />
+        <div className="overdue-title">
+          <img className="crab" src={crab} alt="crab" />
+          <img className="hamster" src={hamster} alt="hamster" />
+          <div className="overdue-highlight">
+            <div className="circle" />
+            <div className="overdue-title-text-1">超期</div>
+          </div>
+          <div className="overdue-title-text-2">作业名单</div>
+          <img className="frog1" src={frog1} alt="frog1" />
+          <img className="frog2" src={frog2} alt="frog2" />
+        </div>
         <div className="overdue-value">
           {showAssignments.map(assignment => this.buildCard(assignment))}
         </div>

@@ -18,11 +18,11 @@ export class AssignmentPage extends Component {
     this.props.fetchAssignments(pageType)
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setIndex()
-    }, 5000)
-  }
+  // componentDidMount() {
+  //   setInterval(() => {
+  //     this.setIndex()
+  //   }, 5000)
+  // }
 
   setIndex = () => {
     const assignments = this.props.assignments
@@ -42,7 +42,7 @@ export class AssignmentPage extends Component {
 
   render() {
     const showAssignments = this.props.assignments
-    const pageType = this.props.pageType
+    const pageType = 'overdue'
 
     return (
       <div className="content" >
