@@ -1,10 +1,9 @@
 .overdue-group {
-    width: 96em;
-    margin: 3em;
-    border-radius: 16px;
+    min-height: 48em;
 }
 
 .overdue-title {
+    width: 96em;
     height: 8em;
     display: flex;
     border-radius: 4px 4px 0 0;
@@ -16,6 +15,7 @@
 }
 
 .overdue-value {
+    width: 96em;
     height: 40em;
     border-radius: 0 0 4px 4px;
     background-color: #c4e7f5;
@@ -38,7 +38,7 @@
 }
 
 .interviewer-profile img{
-    width: 110px;
+    width: 8em;
     margin-left: auto;
     display: block;
     margin-right: auto;

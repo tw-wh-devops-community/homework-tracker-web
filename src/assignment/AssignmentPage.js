@@ -9,8 +9,9 @@ import { showPageType, fetchAssignments } from './actions'
 
 const groupCardCount = 10
 export class AssignmentPage extends Component {
-  state = {
-    index: 0,
+  constructor(props) {
+    super(props)
+    this.state = { fontSize: window.innerHeight / 9, index: 0, }
   }
 
   componentWillMount() {
@@ -50,7 +51,7 @@ export class AssignmentPage extends Component {
     const totalPage = Math.ceil(assignments.length / groupCardCount)
 
     return (
-      <div className="content" >
+      <div className="content" style={{ fontSize: `${this.state.fontSize}%` }}>
         {pageType === 'intraday' &&
         <Intraday
           showAssignments={showAssignments}
