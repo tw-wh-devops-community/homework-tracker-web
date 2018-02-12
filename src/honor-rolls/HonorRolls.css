@@ -40,9 +40,6 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
-.honor-rolls-content .interviewer-name{
+.honor-rolls-content .intraday-interviewer-name{
     background-color: #c4e7f5;
-}
-.honor-rolls-content .interviewer_profile img{
-    margin-top: 1.6em;
 }

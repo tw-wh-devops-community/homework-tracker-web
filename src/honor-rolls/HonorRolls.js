@@ -22,8 +22,8 @@ export class HonorRolls extends Component {
     const displaySuffix = type === 'speed' ? '小时' : '份'
     return (
       <div className="card" key={item.interviewer_employee_id}>
-        <div className="interviewer-name">{item.interviewer_name}</div>
-        <div className="interviewer_profile">
+        <div className="intraday-interviewer-name">{item.interviewer_name}</div>
+        <div className="interviewer-profile">
           <img src={interviewerProfileUrl} alt="" />
         </div>
         <div className="time-records">
