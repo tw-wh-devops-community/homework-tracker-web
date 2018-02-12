@@ -15,5 +15,9 @@ RUN npm run build
 
 EXPOSE 3000
 
+ARG NODE_ENV
+
+ENV NODE_ENV ${NODE_ENV}
+
 # defined in package.json
 CMD [ "npm", "run", "start" ]
