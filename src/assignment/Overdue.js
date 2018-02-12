@@ -16,13 +16,25 @@ export class Overdue extends Component {
 
     return (
       <div className="card" key={assignment.interviewer_employee_id}>
-        <div className="interviewer-name">{assignment.interviewer_name}</div>
-        <div className="interviewer_profile">
+        <div className="overdue-interviewer-name">{assignment.interviewer_name}</div>
+        <div className="interviewer-profile">
           <img src={interviewerProfileUrl} alt="" />
         </div>
-        <div className="time-records">{assignment.time_records}</div>
+        <div className="time-records">{assignment.time_records.length}份作业</div>
       </div>
     )
+  }
+
+  buildEmptyCard = (index) => {
+    const emptyCard = []
+    for (let i = 0; i < index; i += 1) {
+      emptyCard.push(
+        <div className="card" key={i}>
+          <div className="overdue-interviewer-name" />
+        </div>,
+      )
+    }
+    return emptyCard
   }
 
   render() {
@@ -41,7 +53,11 @@ export class Overdue extends Component {
           <img className="frog2" src={frog2} alt="frog2" />
         </div>
         <div className="overdue-value">
-          {showAssignments.map(assignment => this.buildCard(assignment))}
+          <div className="overdue-card">
+            {showAssignments.map(assignment => this.buildCard(assignment))}
+            {showAssignments.length < 10 && this.buildEmptyCard(10 - showAssignments.length)}
+          </div>
+          <div className="overdue-footer">Page {this.props.currentPage} of {this.props.totalPage}</div>
         </div>
       </div>
     )
@@ -49,6 +65,8 @@ export class Overdue extends Component {
 }
 Overdue.propTypes = {
   showAssignments: PropTypes.arrayOf(BulletinShape),
+  totalPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
 }
 
 Overdue.defaultProps = {

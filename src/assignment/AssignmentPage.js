@@ -43,10 +43,11 @@ export class AssignmentPage extends Component {
   render() {
     const currentIndex = this.state.index * groupCardCount
     const nextIndex = (this.state.index + 1) * groupCardCount
-    const showAssignments = this.props.assignments.slice(currentIndex, nextIndex)
+    const assignments = this.props.assignments
+    const showAssignments = assignments.slice(currentIndex, nextIndex)
 
     const pageType = this.props.pageType
-    const totalPage = Math.ceil(showAssignments.length / groupCardCount)
+    const totalPage = Math.ceil(assignments.length / groupCardCount)
 
     return (
       <div className="content" >
@@ -54,13 +55,13 @@ export class AssignmentPage extends Component {
         <Intraday
           showAssignments={showAssignments}
           totalPage={totalPage}
-          currentPage={currentIndex + 1}
+          currentPage={this.state.index + 1}
         />}
         {pageType === 'overdue' &&
         <Overdue
           showAssignments={showAssignments}
           totalPage={totalPage}
-          currentPage={currentIndex + 1}
+          currentPage={this.state.index + 1}
         />}
       </div>
     )

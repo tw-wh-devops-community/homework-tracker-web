@@ -28,6 +28,7 @@
     height: 36em;
     margin: 0 4em;
 }
+
 .intraday-footer {
     height: 3em;
     display: flex;
@@ -108,7 +109,7 @@
     background: #ed9924;
 }
 
-.interviewer-name {
+.intraday-interviewer-name {
     height: 1.5em;
     bottom: 6.1em;
     left: 1.2em;
@@ -121,7 +122,9 @@
 }
 
 .time-highlight {
-    font-size: 2em;
+    color: red;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .time-records {

@@ -16,7 +16,7 @@ export class Intraday extends Component {
 
     return (
       <div className="card" key={assignment.interviewer_employee_id}>
-        <div className="interviewer-name">{assignment.interviewer_name}</div>
+        <div className="intraday-interviewer-name">{assignment.interviewer_name}</div>
         <div className="interviewer-profile">
           <img src={interviewerProfileUrl} alt="" />
         </div>
@@ -34,7 +34,7 @@ export class Intraday extends Component {
     for (let i = 0; i < index; i += 1) {
       emptyCard.push(
         <div className="card" key={i}>
-          <div className="interviewer-name" />
+          <div className="intraday-interviewer-name" />
         </div>,
       )
     }
