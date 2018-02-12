@@ -11,7 +11,7 @@ const groupCardCount = 10
 export class AssignmentPage extends Component {
   constructor(props) {
     super(props)
-    this.state = { fontSize: window.innerHeight / 9, index: 0, }
+    this.state = { fontSize: window.innerHeight / 9, index: 0 }
   }
 
   componentWillMount() {
