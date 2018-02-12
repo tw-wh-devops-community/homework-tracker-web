@@ -1,0 +1,125 @@
+.overdue-group {
+    min-height: 48em;
+}
+
+.overdue-title {
+    width: 96em;
+    height: 8em;
+    display: flex;
+    border-radius: 4px 4px 0 0;
+    background-color: #9bd6ee;
+    border: solid 3px #545c50;
+    border-bottom-width: 0;
+    justify-content: center;
+    padding-top: 2em;
+}
+
+.overdue-value {
+    width: 96em;
+    height: 40em;
+    border-radius: 0 0 4px 4px;
+    background-color: #c4e7f5;
+    border: solid 3px #545c50;
+}
+
+.overdue-card {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 36em;
+    margin: 0 4em;
+}
+
+.overdue-footer {
+    height: 3em;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.interviewer-profile img{
+    width: 8em;
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 14em;
+    border-radius: 20px;
+    border: solid 3px #545c50;
+    margin: 4em 1em 0 1em;
+    position: relative;
+}
+
+.crab {
+    width: 7em;
+    height: 5em;
+}
+
+.hamster {
+    width: 6em;
+    height: 5em;
+}
+
+.frog1 {
+    height: 5em;
+    width: 6em;
+}
+
+.frog2 {
+    height: 5em;
+    width: 7em;
+}
+
+.overdue-title-text-1 {
+    position: absolute;
+    font-size: 3.5em;
+    color: #ffffff;
+    justify-content: center;
+    display: flex;
+    width: 3em;
+    z-index: 2;
+}
+
+.overdue-highlight {
+    width: 11em;
+    position: relative;
+}
+
+.overdue-title-text-2 {
+    width: 4.5em;
+    font-size: 3.5em;
+    font-weight: 600;
+    color: #fdfdfd;
+    -webkit-text-stroke: 1px #685d54;
+
+}
+
+.overdue-interviewer-name {
+    height: 1.5em;
+    bottom: 6.1em;
+    left: 1.2em;
+    position: absolute;
+    background-color: #c4e7f5;
+    width: 5em;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.circle {
+    bottom: 0.5em;
+    left: 4em;
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    background: #31a7d5;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    z-index: 1;
+}

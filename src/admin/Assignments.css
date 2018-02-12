@@ -4,40 +4,49 @@
     margin-right: auto;
 }
 
-.tableHeader{
+.table-header{
     display: flex;
     background: #bfbaba;
     height: 40px;
     justify-content: space-around;
 }
 
-.tableRow{
+.table-row{
     display: flex;
     height: 40px;
     justify-content: space-around;
+    background-color: #dedada;
 }
 
-.tableValue {
+.highlight-item{
+    background-color: #ffffff;
+}
+
+.table-value {
     display: flex;
     flex-direction: column;
 }
-.tableColumn{
+.table-column{
     width: 15%;
     display: flex;
     align-items: center;
     justify-content:  center;
 }
-.tableEditIcon{
+.table-editIcon{
     display: none;
     width: 25px;
     padding-right: 10px;
 }
-.inProcess:hover .tableEditIcon{
+.ongoing:hover .table-editIcon{
     display:block;
 }
-.timeout:hover .tableEditIcon{
+.overdue:hover .table-editIcon{
     display:block;
 }
-.timeout .tableColumn{
+.overdue .table-column{
     color: red;
+}
+
+.table-column i{
+    cursor:pointer
 }

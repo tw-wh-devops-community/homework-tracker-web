@@ -1,0 +1,45 @@
+.content {
+    display: flex;
+}
+
+.honor-rolls-container{
+    width: 96em;
+    margin: 3em;
+    border-radius: 16px;
+}
+.honor-rolls-title{
+    height: 8em;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 4px 4px 0 0;
+    background-color: #9bd6ee;
+    border: solid 3px #545c50;
+    border-bottom-width: 0;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-top: 2em;
+}
+.honor-rolls-title-text{
+    position: absolute;
+    font-size: 3.5em;
+    color: #ffffff;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -ms-flexbox;
+    display: flex;
+    width: 3em;
+    z-index: 2;
+}
+.honor-rolls-content-wrapper{
+    border-radius: 0 0 4px 4px;
+    border: solid 3px #545c50;
+}
+.honor-rolls-content{
+    height: 20em;
+    background-color: #c4e7f5;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.honor-rolls-content .intraday-interviewer-name{
+    background-color: #c4e7f5;
+}

@@ -10,7 +10,7 @@ body {
   margin-right: auto;
 }
 
-.homePage{
+.homepage-logo{
   float: left;
   width: 50%;
   font-size: 30px;
@@ -18,14 +18,13 @@ body {
 
 }
 
-.buttonNew{
+.button-new{
   height: 65px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-.buttonNew button{
-  float: right;
+.button-new button{
   font-size: 20px;
   padding: 8px 35px;
   background-color: #4eb0d0;

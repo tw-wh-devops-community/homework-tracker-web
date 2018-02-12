@@ -1,29 +1,88 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import './List.css'
-import SideList from './SideList'
+import Intraday from './Intraday'
+import Overdue from './Overdue'
+import './AssigmentPage.css'
+import { BulletinShape } from '../shared/shape'
+import { showPageType, fetchAssignments } from './actions'
 
-export default class AssignmentPage extends Component {
+const groupCardCount = 10
+export class AssignmentPage extends Component {
   constructor(props) {
     super(props)
-    this.state = { height: window.innerHeight }
+    this.state = { fontSize: window.innerHeight / 9, index: 0 }
+  }
+
+  componentWillMount() {
+    const pageType = this.props.pageType
+    this.props.fetchAssignments(pageType)
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setIndex()
+    }, 5000)
+  }
+
+  setIndex = () => {
+    const assignments = this.props.assignments
+
+    if ((this.state.index + 1) * groupCardCount < assignments.length) {
+      this.setState({
+        index: this.state.index + 1,
+      })
+    } else {
+      this.props.showPageType(this.props.pageType)
+      this.props.fetchAssignments(this.props.pageType)
+      this.setState({
+        index: 0,
+      })
+    }
   }
 
   render() {
-    const { title } = this.props
+    const currentIndex = this.state.index * groupCardCount
+    const nextIndex = (this.state.index + 1) * groupCardCount
+    const assignments = this.props.assignments
+    const showAssignments = assignments.slice(currentIndex, nextIndex)
+
+    const pageType = this.props.pageType
+    const totalPage = Math.ceil(assignments.length / groupCardCount)
+
     return (
-      <div className="content" style={{ height: `${this.state.height}px` }}>
-        <div className="title">{title}</div>
-        <div className="content-container">
-          <div className="side-list"><SideList /></div>
-          <div className="main-content" />
-        </div>
+      <div className="content" style={{ fontSize: `${this.state.fontSize}%` }}>
+        {pageType === 'intraday' &&
+        <Intraday
+          showAssignments={showAssignments}
+          totalPage={totalPage}
+          currentPage={this.state.index + 1}
+        />}
+        {pageType === 'overdue' &&
+        <Overdue
+          showAssignments={showAssignments}
+          totalPage={totalPage}
+          currentPage={this.state.index + 1}
+        />}
       </div>
     )
   }
 }
 
 AssignmentPage.propTypes = {
-  title: PropTypes.string.isRequired,
+  assignments: PropTypes.arrayOf(BulletinShape),
+  pageType: PropTypes.string.isRequired,
+  fetchAssignments: PropTypes.func.isRequired,
+  showPageType: PropTypes.func.isRequired,
 }
 
+AssignmentPage.defaultProps = {
+  assignments: [],
+}
+
+const mapStateToProps = state => ({
+  pageType: state.assignmentPage.showPageType,
+  assignments: state.assignmentPage.assignments,
+})
+
+export default connect(mapStateToProps, { fetchAssignments, showPageType })(AssignmentPage)

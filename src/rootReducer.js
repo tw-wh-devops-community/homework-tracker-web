@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux'
-import homework from './homework/reducer'
+import assignment from './admin/reducer'
+import assignmentPage from './assignment/reducer'
+import honorRollsPage from './honor-rolls/reducer'
 
 const rootReducer = combineReducers({
-  homework,
+  assignment,
+  assignmentPage,
+  honorRollsPage,
 })
 
 export default rootReducer
