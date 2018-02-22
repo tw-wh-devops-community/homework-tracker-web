@@ -70,8 +70,8 @@ HonorRolls.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-  honorRollsSortBySpeed: state.honorRollsPage.honorRollsSortBySpeed,
-  honorRollsSortByQuantity: state.honorRollsPage.honorRollsSortByQuantity,
+  honorRollsSortBySpeed: state.assignmentPage.honorRollsSortBySpeed,
+  honorRollsSortByQuantity: state.assignmentPage.honorRollsSortByQuantity,
 })
 
 export default connect(mapStateToProps,

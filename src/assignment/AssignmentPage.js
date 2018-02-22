@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Intraday from './Intraday'
 import Overdue from './Overdue'
+import HonorRolls from './HonorRolls'
 import './AssigmentPage.css'
 import { BulletinShape } from '../shared/shape'
 import { showPageType, fetchAssignments } from './actions'
@@ -16,7 +17,9 @@ export class AssignmentPage extends Component {
 
   componentWillMount() {
     const pageType = this.props.pageType
-    this.props.fetchAssignments(pageType)
+    if (pageType !== 'honor-rolls') {
+      this.props.fetchAssignments(pageType)
+    }
   }
 
   componentDidMount() {
@@ -34,7 +37,9 @@ export class AssignmentPage extends Component {
       })
     } else {
       this.props.showPageType(this.props.pageType)
-      this.props.fetchAssignments(this.props.pageType)
+      if (this.props.pageType !== 'honor-rolls') {
+        this.props.fetchAssignments(this.props.pageType)
+      }
       this.setState({
         index: 0,
       })
@@ -64,6 +69,8 @@ export class AssignmentPage extends Component {
           totalPage={totalPage}
           currentPage={this.state.index + 1}
         />}
+        {pageType === 'honor-rolls' &&
+        <HonorRolls />}
       </div>
     )
   }

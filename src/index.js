@@ -10,7 +10,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Admin from './admin/Admin'
 import Assignments from './assignment/AssignmentPage'
-import HonorRolls from './honor-rolls/HonorRolls'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,7 +17,6 @@ ReactDOM.render(
       <div>
         <Route exact path="/admin" component={Admin} />
         <Route path="/assignments" component={Assignments} />
-        <Route path="/honor-rolls" component={HonorRolls} />
       </div>
     </Router>
   </Provider>,
