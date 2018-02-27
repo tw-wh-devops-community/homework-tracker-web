@@ -35,6 +35,19 @@ export class HonorRolls extends Component {
     )
   }
 
+  buildEmptyCard = (index) => {
+    const emptyCard = []
+    for (let i = 0; i < index; i += 1) {
+      emptyCard.push(
+        <div className="card" key={i}>
+          <div className="intraday-interviewer-name" />
+        </div>,
+      )
+    }
+    return emptyCard
+  }
+
+
   render() {
     const { honorRollsSortBySpeed, honorRollsSortByQuantity } = this.props
     return (
@@ -46,9 +59,13 @@ export class HonorRolls extends Component {
           <div className="honor-rolls-content-wrapper">
             <div className="honor-rolls-content">
               {honorRollsSortBySpeed.map(item => this.buildCard(item, 'speed'))}
+              {honorRollsSortBySpeed.length < 5
+              && this.buildEmptyCard(5 - honorRollsSortBySpeed.length)}
             </div>
             <div className="honor-rolls-content">
               {honorRollsSortByQuantity.map(item => this.buildCard(item, 'quantity'))}
+              {honorRollsSortByQuantity.length < 5
+              && this.buildEmptyCard(5 - honorRollsSortByQuantity.length)}
             </div>
           </div>
         </div>
