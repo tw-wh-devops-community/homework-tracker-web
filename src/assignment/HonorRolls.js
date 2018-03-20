@@ -54,7 +54,7 @@ export class HonorRolls extends Component {
       <div className="content" >
         <div className="honor-rolls-container">
           <div className="honor-rolls-title">
-            <div className="honor-rolls-title-text">光荣榜</div>
+            <div className="honor-rolls-title-text">感谢, 笔芯</div>
           </div>
           <div className="honor-rolls-content-wrapper">
             <div className="honor-rolls-content">

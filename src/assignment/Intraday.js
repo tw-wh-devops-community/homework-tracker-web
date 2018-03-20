@@ -50,9 +50,9 @@ export class Intraday extends Component {
           <img className="hamster" src={hamster} alt="hamster" />
           <div className="intraday-highlight">
             <div className="rectangle" />
-            <div className="intraday-title-text-1">24小时</div>
+            <div className="intraday-title-text-1">辛苦啦</div>
           </div>
-          <div className="intraday-title-text-2">内需提交作业名单</div>
+          <div className="intraday-title-text-2">等你交作业哦</div>
           <img className="frog1" src={frog1} alt="frog1" />
           <img className="frog2" src={frog2} alt="frog2" />
         </div>

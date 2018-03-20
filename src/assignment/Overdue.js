@@ -46,9 +46,9 @@ export class Overdue extends Component {
           <img className="hamster" src={hamster} alt="hamster" />
           <div className="overdue-highlight">
             <div className="circle" />
-            <div className="overdue-title-text-1">超期</div>
+            <div className="overdue-title-text-1">快快快</div>
           </div>
-          <div className="overdue-title-text-2">作业名单</div>
+          <div className="overdue-title-text-2">交作业啦!  ≧▽≦</div>
           <img className="frog1" src={frog1} alt="frog1" />
           <img className="frog2" src={frog2} alt="frog2" />
         </div>
