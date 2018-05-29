@@ -24,7 +24,7 @@ class EditAssignment extends Component {
     this.props.fetchInterviewers()
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.oldState = {}
     this.oldState.oldInterviewerIdValue = this.state.interviewerIdValue
     this.oldState.oldAssignedDate = this.state.assignedDate
@@ -53,27 +53,25 @@ class EditAssignment extends Component {
   }
 
   create = () => {
-    let oldInterviewerIdValue = this.oldState.oldInterviewerIdValue;
-    let oldAssignedDate = this.oldState.oldAssignedDate;
-    let oldDeadlineDate = this.oldState.oldDeadlineDate;
-    
+    const oldInterviewerIdValue = this.oldState.oldInterviewerIdValue
+    const oldAssignedDate = this.oldState.oldAssignedDate
+    const oldDeadlineDate = this.oldState.oldDeadlineDate
     if (!this.validate()) {
       this.setState({ validateFailed: true })
       return
     }
     const { interviewerIdValue, assignedDate, deadlineDate } = this.state
-    let data = {}
-    if(assignedDate !== oldAssignedDate){
+    const data = {}
+    if (assignedDate !== oldAssignedDate) {
       data.assigned_date = assignedDate
     }
-    if(deadlineDate !== oldDeadlineDate){
+    if (deadlineDate !== oldDeadlineDate) {
       data.deadline_date = deadlineDate
     }
-    if(interviewerIdValue !== oldInterviewerIdValue){
+    if (interviewerIdValue !== oldInterviewerIdValue) {
       data.interviewer_employee_id = interviewerIdValue
     }
-    if(Object.keys(data).length === 0){
-      console.log("内容没变化，不发请求")
+    if (Object.keys(data).length === 0) {
       this.props.showEditModal()
       return
     }
