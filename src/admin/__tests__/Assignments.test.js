@@ -10,6 +10,7 @@ describe('<Assignments/>', () => {
       showEditModal: jest.fn(),
       showFinishModal: jest.fn(),
       showDeleteModal: jest.fn(),
+      showLogModal: jest.fn(),
       setSelectAssignmentId: jest.fn(),
       assignments: [],
     }
