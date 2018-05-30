@@ -41,21 +41,23 @@ class NewInterviewer extends Component {
       this.setState({ validateFailed: true })
       return
     }
+    this.setState({ validateFailed: false })
     const { name, employeeId, jobRole } = this.state
     this.props.createInterviewer({
       name,
       employeeId,
       jobRole,
     })
-    this.props.onCancel()
+      // this.props.onCancel()
   }
 
   render() {
-    const { onCancel, roleOptions } = this.props
+    const { onCancel, roleOptions, errorMsg } = this.props
     const { name, jobRole, employeeId } = this.state
 
     return (
       <div className='container'>
+
         <div className='modal-container'>
           <div className='new-title'>信息录入</div>
           <div className='row'><span className='field'>姓名</span>
@@ -76,6 +78,8 @@ class NewInterviewer extends Component {
           </div>
           {this.state.validateFailed &&
             <p className="reminder">请完成所有项的输入</p>}
+
+          <p className="reminder">{errorMsg}</p>
           <div className='button-container'>
             <button className='button cancel' onClick={onCancel}>取消</button>
             <button className='button confirm' onClick={this.create}>确认</button>
@@ -91,14 +95,17 @@ NewInterviewer.propTypes = {
   onCancel: PropTypes.func.isRequired,
   createInterviewer: PropTypes.func.isRequired,
   fetchRoles: PropTypes.func.isRequired,
+  errorMsg: PropTypes.string.isRequired,
 }
 
 NewInterviewer.defaultProps = {
   roleOptions: [],
+  errorMsg: '',
 }
 
 const mapStateToProps = state => ({
   roleOptions: state.interviewer.roleOptions,
+  errorMsg: state.interviewer.errorMsg,
 })
 
 
