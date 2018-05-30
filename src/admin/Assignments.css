@@ -32,16 +32,31 @@
     align-items: center;
     justify-content:  center;
 }
-.table-editIcon{
+.table-editIcon {
     display: none;
     width: 25px;
     padding-right: 10px;
+}
+.table-logIcon {
+    display: none;
+    width: 25px;
+    padding-right: 10px;
+}
+.ongoing:hover .table-logIcon{
+    display:block;
 }
 .ongoing:hover .table-editIcon{
     display:block;
 }
 .overdue:hover .table-editIcon{
     display:block;
+}
+.overdue:hover .table-logIcon{
+    display:block;
+}
+.finished:hover .table-logIcon{
+    display: block;
+    padding-left: 60px;
 }
 .overdue .table-column{
     color: red;

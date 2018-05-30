@@ -10,11 +10,16 @@ import { FETCH_ASSIGNMENT,
   SHOW_DELETE_MODAL,
   SHOW_FINISH_MODAL,
   SHOW_EDIT_MODAL,
+  SHOW_LOG_MODAL,
+  FETCH_ASSIGNMENT_LOGS,
 }
 from './actions'
 
 const REQUEST_ASSIGNMENT_FINISHED = combineActions(resolve(FETCH_ASSIGNMENT)
   , reject(FETCH_ASSIGNMENT))
+
+const REQUEST_ASSIGNMENT_LOGS_FINISHED = combineActions(resolve(FETCH_ASSIGNMENT_LOGS)
+, reject(FETCH_ASSIGNMENT_LOGS))
 
 const REQUEST_INTERVIEWERS_FINISHED = combineActions(resolve(FETCH_INTERVIEWERS)
   , reject(FETCH_INTERVIEWERS))
@@ -24,9 +29,11 @@ const DELETE_ASSIGNMENT_FINISHED = combineActions(resolve(DELETE_ASSIGNMENT)
 
 const loading = handleActions({
   [pending(FETCH_ASSIGNMENT)]: () => true,
+  [pending(FETCH_ASSIGNMENT_LOGS)]: () => true,
   [pending(FETCH_INTERVIEWERS)]: () => true,
   [pending(FETCH_ROLES)]: () => true,
   [pending(DELETE_ASSIGNMENT)]: () => true,
+  [REQUEST_ASSIGNMENT_LOGS_FINISHED]: () => false,
   [REQUEST_ASSIGNMENT_FINISHED]: () => false,
   [REQUEST_INTERVIEWERS_FINISHED]: () => false,
   [DELETE_ASSIGNMENT_FINISHED]: () => false,
@@ -43,6 +50,10 @@ const interviewerOptions = handleActions({
      { value: interviewer.employee_id, label: interviewer.name })),
 }, [])
 
+const assignmentLogs = handleActions({
+  [resolve(FETCH_ASSIGNMENT_LOGS)]: (state, { payload }) => payload,
+}, [])
+
 const roleOptions = handleActions({
   [resolve(FETCH_ROLES)]: (state, { payload }) => payload.map(role => (
     { value: role, label: role })),
@@ -57,6 +68,7 @@ const changeModal = handleActions({
   [SHOW_DELETE_MODAL]: state => ({ ...state, showDeleteModal: !state.showDeleteModal }),
   [SHOW_FINISH_MODAL]: state => ({ ...state, showFinishModal: !state.showFinishModal }),
   [SHOW_EDIT_MODAL]: state => ({ ...state, showEditModal: !state.showEditModal }),
+  [SHOW_LOG_MODAL]: state => ({ ...state, showLogModal: !state.showLogModal }),
 }, false)
 
 export default combineReducers({
@@ -66,4 +78,5 @@ export default combineReducers({
   assignments,
   setAssignmentId,
   changeModal,
+  assignmentLogs,
 })
