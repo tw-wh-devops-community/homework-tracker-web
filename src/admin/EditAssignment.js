@@ -62,18 +62,15 @@ class EditAssignment extends Component {
     }
     const { interviewerIdValue, assignedDate, deadlineDate } = this.state
     const data = {}
-    if (assignedDate.toLocaleString()!== oldAssignedDate.toLocaleString()) {
-      console.log(`分配日期 旧的日期：${oldAssignedDate.toLocaleString()},新的日期:${assignedDate.toLocaleString()}`)
+    if (assignedDate.toLocaleString() !== oldAssignedDate.toLocaleString()) {
       data.assigned_date = assignedDate
     }
     if (deadlineDate.toLocaleString() !== oldDeadlineDate.toLocaleString()) {
-      console.log(`截止日期 旧的日期：${oldDeadlineDate.toLocaleString()},新的日期:${deadlineDate.toLocaleString()}`)
       data.deadline_date = deadlineDate
     }
     if (interviewerIdValue !== oldInterviewerIdValue) {
       data.interviewer_employee_id = interviewerIdValue
     }
-    console.log(data)
     if (Object.keys(data).length === 0) {
       this.props.showEditModal()
       return
