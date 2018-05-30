@@ -27,19 +27,21 @@
     justify-content: center;
     display: -ms-flexbox;
     display: flex;
-    width: 3em;
+    width: 6em;
     z-index: 2;
 }
 .honor-rolls-content-wrapper{
+    height: 40em;
     border-radius: 0 0 4px 4px;
     border: solid 3px #545c50;
+    background-color: #c4e7f5;
 }
 .honor-rolls-content{
-    height: 20em;
-    background-color: #c4e7f5;
     display: grid;
+    margin: 0 4em;
     grid-template-columns: repeat(5, 1fr);
 }
+
 .honor-rolls-content .intraday-interviewer-name{
     background-color: #c4e7f5;
 }

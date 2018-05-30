@@ -53,7 +53,7 @@ export class AssignmentPage extends Component {
     const showAssignments = assignments.slice(currentIndex, nextIndex)
 
     const pageType = this.props.pageType
-    const totalPage = Math.ceil(assignments.length / groupCardCount)
+    const totalPage = assignments.length > 0 ? Math.ceil(assignments.length / groupCardCount) : 1
 
     return (
       <div className="content" style={{ fontSize: `${this.state.fontSize}%` }}>

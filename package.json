@@ -31,6 +31,7 @@
     "lint": "eslint src",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "start-prod": "NODE_ENV=production node server.js",
     "test": "react-scripts test",
     "test-no-watch": "CI=true react-scripts test",
     "prepush": "npm run lint | npm run test-no-watch"
