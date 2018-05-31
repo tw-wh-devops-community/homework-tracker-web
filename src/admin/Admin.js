@@ -7,6 +7,7 @@ import NewAssignment from './NewAssignment'
 import DeleteAssignment from './DeleteAssignment'
 import FinishAssignment from './FinishAssignment'
 import './Admin.css'
+import ShowAssignmentLog from './ShowAssignmentLog'
 
 export class Admin extends Component {
   state = {
@@ -31,6 +32,7 @@ export class Admin extends Component {
         { this.props.showDeleteModal && <DeleteAssignment /> }
         { this.props.showFinishModal && <FinishAssignment /> }
         { this.props.showEditModal && <EditAssignment /> }
+        { this.props.showLogModal && <ShowAssignmentLog /> }
       </div>
     )
   }
@@ -40,18 +42,21 @@ Admin.propTypes = {
   showDeleteModal: PropTypes.bool,
   showFinishModal: PropTypes.bool,
   showEditModal: PropTypes.bool,
+  showLogModal: PropTypes.bool,
 }
 
 Admin.defaultProps = {
   showDeleteModal: false,
   showFinishModal: false,
   showEditModal: false,
+  showLogModal: false,
 }
 
 const mapStateToProps = state => ({
   showDeleteModal: state.assignment.changeModal.showDeleteModal,
   showEditModal: state.assignment.changeModal.showEditModal,
   showFinishModal: state.assignment.changeModal.showFinishModal,
+  showLogModal: state.assignment.changeModal.showLogModal,
 })
 
 export default connect(mapStateToProps)(Admin)

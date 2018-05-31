@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
 import dateFormat from '../utilities/dateFormat'
 import { AssignmentShape } from '../shared/shape'
-import { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal, showEditModal } from './actions'
+import { fetchAssignments, setSelectAssignmentId, showFinishModal, showDeleteModal, showEditModal, showLogModal } from './actions'
 import './Assignments.css'
 
 const tableHeader = ['面试官', '候选人', 'Role', '分配日期', '截止日期', '完成时间', '当前状态']
@@ -18,6 +18,12 @@ export class Assignments extends Component {
 
   changeShowDeleteModal = (selectAssignmentId) => {
     this.props.showDeleteModal()
+    // this.props.fetchAssignmentLogs(selectAssignmentId)
+    this.props.setSelectAssignmentId(selectAssignmentId)
+  }
+
+  changeShowLogModal = (selectAssignmentId) => {
+    this.props.showLogModal(selectAssignmentId)
     this.props.setSelectAssignmentId(selectAssignmentId)
   }
 
@@ -51,6 +57,7 @@ export class Assignments extends Component {
           <i className='fa fa-check table-editIcon' role='presentation' onClick={() => this.changeShowFinishModal(assignment.id)} />
           <i className='fa fa-edit table-editIcon' role='presentation' onClick={() => this.changeShowEditModal(assignment.id)} />
           <i className='fa fa-trash table-editIcon' role='presentation' onClick={() => this.changeShowDeleteModal(assignment.id)} />
+          <i className='fa fa-eye table-logIcon' role='presentation' onClick={() => this.changeShowLogModal(assignment.id)} />
         </div>
       </div>
     )
@@ -81,6 +88,7 @@ Assignments.propTypes = {
   showFinishModal: PropTypes.func.isRequired,
   showDeleteModal: PropTypes.func.isRequired,
   showEditModal: PropTypes.func.isRequired,
+  showLogModal: PropTypes.func.isRequired,
   setSelectAssignmentId: PropTypes.func.isRequired,
 }
 
@@ -98,4 +106,5 @@ export default connect(mapStateToProps,
     showFinishModal,
     showDeleteModal,
     showEditModal,
+    showLogModal,
   })(Assignments)

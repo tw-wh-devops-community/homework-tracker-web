@@ -1,5 +1,12 @@
 import PropTypes from 'prop-types'
 
+export const AssignmentLogShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  operate_action: PropTypes.number.isRequired,
+  operate_time: PropTypes.string.isRequired,
+  operate_context: PropTypes.string.isRequired,
+})
+
 export const AssignmentShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   candidate: PropTypes.string.isRequired,
