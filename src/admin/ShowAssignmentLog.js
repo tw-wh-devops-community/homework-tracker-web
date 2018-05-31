@@ -12,7 +12,7 @@ import { AssignmentLogShape } from '../shared/shape'
 
 
 const tableHeader = ['操作时间', '动作', '操作内容']
-const actionNames = ['', '新增', '增加', '删除']
+const actionNames = ['', '修改', '新增', '删除']
 const QA = '...'
 
 class ShowLogAssignment extends Component {
@@ -79,15 +79,19 @@ class ShowLogAssignment extends Component {
             <div>作业log</div>
             <div className='close' role="presentation" onClick={() => this.props.showLogModal()}>x</div>
           </div>
-          <div className='table margin-top-16px'>
-            <div className='table-header'>
-              {tableHeader.map(tableTitle => (
-                <div key={tableTitle} className='table-column'>{tableTitle}</div>
-              ))}
-            </div>
-            <div className='table-value'>
-              {assignmentLogs.length <= 0 ? <div className='text-center'>无日志记录</div>
-              : assignmentLogs.map((assignmentLog, index) => this.renderItem(assignmentLog, index))}
+          <div className='modal-body scrollbar'>
+            <div className='table margin-top-16px'>
+              <div className='table-header'>
+                {tableHeader.map(tableTitle => (
+                  <div key={tableTitle} className='table-column'>{tableTitle}</div>
+                ))}
+              </div>
+              <div className='table-value'>
+                {assignmentLogs.length <= 0 ? <div className='text-center'>无日志记录</div>
+                : assignmentLogs.map(
+                  (assignmentLog, index) => this.renderItem(assignmentLog, index))
+                }
+              </div>
             </div>
           </div>
         </div>
