@@ -53,6 +53,7 @@ InterviewerAdmin.propTypes = {
   showEditModal: PropTypes.bool,
   showNewModal: PropTypes.bool,
   showModal: PropTypes.func.isRequired,
+  fetchInterviewers: PropTypes.func.isRequired,
 }
 
 InterviewerAdmin.defaultProps = {
