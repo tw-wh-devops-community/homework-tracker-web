@@ -74,12 +74,12 @@ class ShowLogAssignment extends Component {
     const assignmentLogs = this.props.assignmentLogs
     return (
       <div className='container'>
-        <div className='modal-container backgroud-color-write'>
+        <div className='modal-container'>
           <div className='title backgroud-color-ACACAC'>
             <div>作业log</div>
             <div className='close' role="presentation" onClick={() => this.props.showLogModal()}>x</div>
           </div>
-          <div className='modal-body scrollbar'>
+          <div className='modal-body scrollbar backgroud-color-write'>
             <div className='table margin-top-16px'>
               <div className='table-header'>
                 {tableHeader.map(tableTitle => (
