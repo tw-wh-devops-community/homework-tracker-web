@@ -6,6 +6,7 @@
   line-height: 30px;
   margin-bottom: 16px;
   background: #f8f8f8;
+  
 }
 .demo-nav a {
   line-height: 65px;
@@ -23,4 +24,10 @@
   width: 50%;
   font-size: 30px;
   line-height: 65px;
+}
+.selected{
+  color: #003cff
+}
+.unselected{
+  color: #505050
 }
