@@ -86,7 +86,8 @@ class ShowLogAssignment extends Component {
               ))}
             </div>
             <div className='table-value'>
-              {assignmentLogs.length <= 0 ? '' : assignmentLogs.map((assignmentLog, index) => this.renderItem(assignmentLog, index))}
+              {assignmentLogs.length <= 0 ? <div className='text-center'>无日志记录</div>
+              : assignmentLogs.map((assignmentLog, index) => this.renderItem(assignmentLog, index))}
             </div>
           </div>
         </div>
