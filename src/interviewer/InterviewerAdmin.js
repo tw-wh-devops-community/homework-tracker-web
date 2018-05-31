@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './InterviewerAdmin.css'
 // import EditAssignment from './EditAssignment'
-import { showModal, fetchInterviewers } from './actions'
+import { showModal, fetchInterviewers, showErrorMsg } from './actions'
 
 import NewInterviewer from './NewInterviewer'
 import Interviewers from './Interviewers'
@@ -20,6 +20,7 @@ export class InterviewerAdmin extends Component {
   }
 
   changeShowModal = () => {
+    this.props.showErrorMsg('')
     this.props.showModal()
   }
 
@@ -54,6 +55,7 @@ InterviewerAdmin.propTypes = {
   showNewModal: PropTypes.bool,
   showModal: PropTypes.func.isRequired,
   fetchInterviewers: PropTypes.func.isRequired,
+  showErrorMsg: PropTypes.func.isRequired,
 }
 
 InterviewerAdmin.defaultProps = {
@@ -70,4 +72,5 @@ export default connect(mapStateToProps,
   {
     showModal,
     fetchInterviewers,
+    showErrorMsg,
   })(InterviewerAdmin)

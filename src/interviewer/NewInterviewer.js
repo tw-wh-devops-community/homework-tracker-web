@@ -48,7 +48,6 @@ export class NewInterviewer extends Component {
       employeeId,
       jobRole,
     })
-    // this.props.onCancel()
   }
 
   render() {

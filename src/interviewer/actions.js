@@ -17,7 +17,7 @@ export const fetchRoles = createAction(FETCH_ROLES, () => api.get('/roles'))
 export const deleteInterviewer = createAction(DELETE_INTERVIEWER, interviewerId =>
   api.delete(`/interviewers/${interviewerId}`), interviewerId => [{ id: interviewerId }])
 
-export const showErrorMsg = createAction(SHOW_ERROR_MSG, msg => msg.data.message)
+export const showErrorMsg = createAction(SHOW_ERROR_MSG, msg => msg)
 
 export const showModal = createAction(SHOW_NEW_MODAL)
 
@@ -30,7 +30,7 @@ export const createInterviewer = data => (
         dispatch(fetchInterviewers(''))
       })
       .catch((res) => {
-        dispatch(showErrorMsg(res.response))
+        dispatch(showErrorMsg(res.response.data.message))
       })
   }
 )
