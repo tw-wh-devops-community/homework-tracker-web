@@ -3,21 +3,40 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './InterviewerAdmin.css'
 // import EditAssignment from './EditAssignment'
-import { showModal } from './actions'
+import { showModal, fetchInterviewers } from './actions'
 
 import NewInterviewer from './NewInterviewer'
 import Interviewers from './Interviewers'
 
 export class InterviewerAdmin extends Component {
+  state = {
+    name: '',
+  }
+
+  handleOnChange = field => (event) => {
+    this.setState({
+      [field]: event.target.value,
+    })
+  }
+
   changeShowModal = () => {
     this.props.showModal()
   }
 
+  search = (name) => {
+    // console.log(name)
+    this.props.fetchInterviewers(name)
+  }
+
   render() {
+    const { name } = this.state
     return (
       <div className='homepage'>
         <div className="header">
-          <div className="homepage-logo">HOMEWORK 管理平台</div>
+          <div className="button-search">
+            <input className='input' type="text" onChange={this.handleOnChange('name')} value={name} />
+            <button onClick={() => this.search(name)}>Search</button>
+          </div>
           <div className="button-new">
             <button onClick={() => this.changeShowModal()}>New</button>
           </div>
@@ -49,4 +68,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps,
   {
     showModal,
+    fetchInterviewers,
   })(InterviewerAdmin)

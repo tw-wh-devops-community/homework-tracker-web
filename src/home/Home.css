@@ -2,15 +2,25 @@
   margin: 16px;
 }
 .demo-nav {
-  height: 30px;
+  height: 65px;
   line-height: 30px;
   margin-bottom: 16px;
   background: #f8f8f8;
 }
 .demo-nav a {
-  line-height: 30px;
+  line-height: 65px;
   padding: 0 8px;
+  float: right;
+}
+.demo-nav span {
+  line-height: 65px;
+  float: right;
 }
 .app-list {
   margin-top: 16px;
+}
+.homepage-logo{
+  width: 50%;
+  font-size: 30px;
+  line-height: 65px;
 }

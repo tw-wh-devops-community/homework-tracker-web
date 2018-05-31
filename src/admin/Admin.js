@@ -22,7 +22,6 @@ export class Admin extends Component {
     return (
       <div className='homepage'>
         <div className="header">
-          <div className="homepage-logo">HOMEWORK 管理平台</div>
           <div className="button-new">
             <button onClick={this.changeShowModal}>New</button>
           </div>

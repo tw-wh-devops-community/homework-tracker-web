@@ -37,14 +37,19 @@
     width: 25px;
     padding-right: 10px;
 }
-.ongoing:hover .table-editIcon{
+.table-unbindIcon{
+    display: none;
+    width: 25px;
+    padding-right: 10px;
+}
+.bind:hover .table-editIcon{
     display:block;
 }
-.overdue:hover .table-editIcon{
+.unbind:hover .table-editIcon{
     display:block;
 }
-.overdue .table-column{
-    color: red;
+.bind:hover .table-unbindIcon{
+    display:block;
 }
 
 .table-column i{

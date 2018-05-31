@@ -7,11 +7,11 @@ import { InterviewerShape } from '../shared/shape'
 import { fetchInterviewers, setSelectInterviewerId, showEditModal } from './actions'
 import './Interviewers.css'
 
-const tableHeader = ['姓名', 'id', 'Role', 'openId']
+const tableHeader = ['面试官姓名', '面试官id', 'role', 'openid']
 
 export class Interviewers extends Component {
   componentWillMount() {
-    this.props.fetchInterviewers()
+    this.props.fetchInterviewers('')
   }
 
   changeShowEditModal = (selectInterviewerId) => {
@@ -20,7 +20,7 @@ export class Interviewers extends Component {
   }
 
   renderItem = (interviewer, index) => {
-    const tableValue = classNames(`table-row ${interviewer.status}`, {
+    const tableValue = classNames(`table-row ${interviewer.openId === null ? 'bind' : 'unbind'}`, {
       'highlight-item': index % 2 === 0,
     })
     return (
@@ -34,6 +34,7 @@ export class Interviewers extends Component {
         <div className='table-column'>{interviewer.openId}</div>
         <div className='table-column'>
           <i className='fa fa-edit table-editIcon' role='presentation' onClick={() => this.changeShowEditModal(interviewer.id)} />
+          <i className='fa fa-unlock table-unbindIcon' role='presentation' onClick={() => this.changeShowEditModal(interviewer.id)} />
         </div>
       </div>
     )
@@ -74,7 +75,8 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps,
-  { fetchInterviewers,
+  {
+    fetchInterviewers,
     setSelectInterviewerId,
     showEditModal,
   })(Interviewers)

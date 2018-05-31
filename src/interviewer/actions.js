@@ -9,7 +9,8 @@ export const SHOW_EDIT_MODAL = 'INTERVIEWER/SHOW_EDIT_MODAL'
 export const SHOW_ERROR_MSG = 'INTERVIEWER/SHOW_ERROR_MSG'
 export const SHOW_NEW_MODAL = 'INTERVIEWER/SHOW_NEW_MODAL'
 
-export const fetchInterviewers = createAction(FETCH_INTERVIEWERS, () => api.get('/interviewers'))
+export const fetchInterviewers = createAction(FETCH_INTERVIEWERS,
+  name => api.get(`/interviewers/${name}`))
 
 export const fetchRoles = createAction(FETCH_ROLES, () => api.get('/roles'))
 
@@ -23,13 +24,14 @@ export const showModal = createAction(SHOW_NEW_MODAL)
 export const createInterviewer = data => (
   (dispatch) => {
     api.post('/interviewers', data)
-    .then(() => {
-      dispatch(showModal())
-      dispatch(fetchInterviewers())
-    })
-    .catch((res) => {
-      dispatch(showErrorMsg(res.response))
-    })
+      .then(() => {
+        dispatch(showErrorMsg(''))
+        dispatch(showModal())
+        dispatch(fetchInterviewers(''))
+      })
+      .catch((res) => {
+        dispatch(showErrorMsg(res.response))
+      })
   }
 )
 
@@ -37,7 +39,7 @@ export const updateInterviewer = data => (
   (dispatch) => {
     api.put('/interviewers',
       data).then(() =>
-        dispatch(fetchInterviewers()),
+        dispatch(fetchInterviewers('')),
     )
   }
 )

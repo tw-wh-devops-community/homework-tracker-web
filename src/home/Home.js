@@ -10,8 +10,10 @@ export const Home = () => (
   <Router>
     <div className="demo">
       <div className="demo-nav">
-        <Link to="/admin" replace>作业分配管理</Link>
+        <div className="homepage-logo">HOMEWORK 管理平台</div>
         <Link to="/interviewer" replace>面试官管理</Link>
+        <span>|</span>
+        <Link to="/admin" replace>作业分配管理</Link>
       </div>
       <Switch>
         <Route path="/admin" component={Admin} />

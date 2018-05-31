@@ -9,20 +9,26 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-
-.homepage-logo{
+.button-search{
+  height: 65px;
+  align-items: center;
+  display: flex;
   float: left;
-  width: 50%;
-  font-size: 30px;
-  line-height: 65px;
-
 }
-
+.button-search button{
+  font-size: 20px;
+  padding: 8px 35px;
+  background-color: #4eb0d0;
+  color: white;
+}
+.button-search input{
+  font-size: 25px;
+  padding: 3px;
+}
 .button-new{
   height: 65px;
-  display: flex;
   align-items: center;
-  justify-content: flex-end;
+  float: right;
 }
 .button-new button{
   font-size: 20px;
