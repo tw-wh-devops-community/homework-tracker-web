@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.header{
+  width: 95%;
+  height: 65px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button-search{
+  height: 65px;
+  align-items: center;
+  display: flex;
+  float: left;
+}
+.button-search button{
+  font-size: 20px;
+  padding: 8px 35px;
+  background-color: #4eb0d0;
+  color: white;
+}
+.button-search input{
+  font-size: 25px;
+  padding: 3px;
+}
+.button-new{
+  height: 65px;
+  align-items: center;
+  float: right;
+}
+.button-new button{
+  font-size: 20px;
+  padding: 8px 35px;
+  background-color: #4eb0d0;
+  color: white;
+}

@@ -8,7 +8,7 @@ import { RoleOptionShape } from '../shared/shape'
 import { createInterviewer, fetchRoles } from './actions'
 import './NewInterviewer.css'
 
-class NewInterviewer extends Component {
+export class NewInterviewer extends Component {
   state = {
     validateFailed: false,
     name: '',
@@ -48,7 +48,6 @@ class NewInterviewer extends Component {
       employeeId,
       jobRole,
     })
-      // this.props.onCancel()
   }
 
   render() {
