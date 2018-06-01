@@ -53,3 +53,10 @@ export const HonorRollShape = PropTypes.shape({
   count: PropTypes.number.isRequired,
 })
 
+export const InterviewerObjShape = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  employee_id: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  open_id: PropTypes.string,
+})

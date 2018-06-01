@@ -47,5 +47,5 @@ export const updateInterviewer = data => (
 export const setSelectInterviewerId
   = createAction(SET_INTERVIEWER_ID, interviewerId => interviewerId)
 
-export const showEditModal = createAction(SHOW_EDIT_MODAL)
+export const showModalE = createAction(SHOW_EDIT_MODAL)
 

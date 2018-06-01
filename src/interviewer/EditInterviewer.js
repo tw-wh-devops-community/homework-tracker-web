@@ -4,17 +4,17 @@ import { connect } from 'react-redux'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 import 'antd/dist/antd.css'
-import { RoleOptionShape } from '../shared/shape'
-import { createInterviewer, fetchRoles } from './actions'
+import { RoleOptionShape, InterviewerObjShape } from '../shared/shape'
+import { updateInterviewer, fetchRoles, showErrorMsg } from './actions'
 import './NewInterviewer.css'
 
-export class NewInterviewer extends Component {
+export class EditInterviewer extends Component {
   state = {
     validateFailed: false,
-    name: '',
-    jobRole: '',
-    employeeId: '',
-    selectedOptions: '',
+    name: this.props.interviewer.name,
+    jobRole: this.props.interviewer.role,
+    employeeId: this.props.interviewer.employee_id,
+    id: this.props.interviewer.id,
   }
 
   componentWillMount() {
@@ -42,22 +42,22 @@ export class NewInterviewer extends Component {
       return
     }
     this.setState({ validateFailed: false })
-    const { name, employeeId, jobRole } = this.state
-    this.props.createInterviewer({
-      name,
-      employeeId,
-      jobRole,
-    })
+    const { name, employeeId, jobRole, id } = this.state
+    console.log({ name, employeeId, jobRole, id })
+    // this.props.createInterviewer({
+    //   name,
+    //   employeeId,
+    //   jobRole,
+    // })
   }
 
   render() {
-    const { onCancel, roleOptions, errorMsg } = this.props
+    const { roleOptions, onCancel, errorMsg } = this.props
     const { name, jobRole, employeeId } = this.state
-
     return (
       <div className='container'>
         <div className='modal-container'>
-          <div className='new-title'>信息录入</div>
+          <div className='new-title'>信息修改</div>
           <div className='row'><span className='field'>姓名</span>
             <input className='input' type="text" onChange={this.handleOnChange('name')} value={name} />
           </div>
@@ -88,25 +88,27 @@ export class NewInterviewer extends Component {
   }
 }
 
-NewInterviewer.propTypes = {
+EditInterviewer.propTypes = {
+  interviewer: PropTypes.objectOf(InterviewerObjShape).isRequired,
+  updateInterviewer: PropTypes.func.isRequired,
   roleOptions: PropTypes.arrayOf(RoleOptionShape),
   onCancel: PropTypes.func.isRequired,
-  createInterviewer: PropTypes.func.isRequired,
   fetchRoles: PropTypes.func.isRequired,
   errorMsg: PropTypes.string.isRequired,
 }
 
-NewInterviewer.defaultProps = {
+EditInterviewer.defaultProps = {
   roleOptions: [],
   errorMsg: '',
 }
-
 const mapStateToProps = state => ({
-  roleOptions: state.interviewer.roleOptions,
-  errorMsg: state.interviewer.errorMsg,
+  interviewer: state.interviewer.interviewers
+    .find(data => data.id === state.interviewer.setInterviewerId.selectInterviewerId),
+    roleOptions: state.interviewer.roleOptions,
+    errorMsg: state.interviewer.errorMsg,
 })
 
 
 export default connect(mapStateToProps,
-  { fetchRoles, createInterviewer })(NewInterviewer)
+  { fetchRoles, updateInterviewer, showErrorMsg })(EditInterviewer)
 

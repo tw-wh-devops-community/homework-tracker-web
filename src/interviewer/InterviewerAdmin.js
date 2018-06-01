@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Input, Icon, Button } from 'antd'
 
 import './InterviewerAdmin.css'
-// import EditAssignment from './EditAssignment'
-import { showModal, fetchInterviewers, showErrorMsg } from './actions'
+import EditInterviewer from './EditInterviewer'
+import { showModal, showModalE, fetchInterviewers, showErrorMsg } from './actions'
 
 import NewInterviewer from './NewInterviewer'
 import Interviewers from './Interviewers'
@@ -26,6 +26,11 @@ export class InterviewerAdmin extends Component {
     this.props.showModal()
   }
 
+  changeEditModal = () => {
+    this.props.showErrorMsg('')
+    this.props.showModalE()
+  }
+
   search = (name) => {
     this.props.fetchInterviewers(name)
   }
@@ -38,7 +43,7 @@ export class InterviewerAdmin extends Component {
   render() {
     const { name } = this.state
     const Search = Input.Search
-    const suffix = name ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null
+    const suffix = name ? <Icon key="aa" type="close-circle" onClick={this.emitEmpty} /> : null
     return (
       <div className='homepage'>
         <div className="header">
@@ -60,7 +65,7 @@ export class InterviewerAdmin extends Component {
         </div>
         <Interviewers />
         {this.props.showNewModal && <NewInterviewer onCancel={() => this.changeShowModal()} />}
-        {this.props.showEditModal && <NewInterviewer />}
+        {this.props.showEditModal && <EditInterviewer onCancel={() => this.changeEditModal()} />}
       </div>
     )
   }
@@ -70,6 +75,7 @@ InterviewerAdmin.propTypes = {
   showEditModal: PropTypes.bool,
   showNewModal: PropTypes.bool,
   showModal: PropTypes.func.isRequired,
+  showModalE: PropTypes.func.isRequired,
   fetchInterviewers: PropTypes.func.isRequired,
   showErrorMsg: PropTypes.func.isRequired,
 }
@@ -89,4 +95,5 @@ export default connect(mapStateToProps,
     showModal,
     fetchInterviewers,
     showErrorMsg,
+    showModalE,
   })(InterviewerAdmin)

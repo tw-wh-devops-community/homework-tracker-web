@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import 'font-awesome/css/font-awesome.min.css'
-import { InterviewerShape } from '../shared/shape'
-import { fetchInterviewers, setSelectInterviewerId, showEditModal } from './actions'
+import { InterviewerObjShape } from '../shared/shape'
+import { fetchInterviewers, setSelectInterviewerId, showModalE } from './actions'
 import './Interviewers.css'
 
 const tableHeader = ['面试官姓名', '面试官id', 'role', 'openid']
@@ -15,7 +15,7 @@ export class Interviewers extends Component {
   }
 
   changeShowEditModal = (selectInterviewerId) => {
-    this.props.showEditModal()
+    this.props.showModalE()
     this.props.setSelectInterviewerId(selectInterviewerId)
   }
 
@@ -60,9 +60,9 @@ export class Interviewers extends Component {
 }
 
 Interviewers.propTypes = {
-  interviewers: PropTypes.arrayOf(InterviewerShape),
+  interviewers: PropTypes.arrayOf(InterviewerObjShape),
   fetchInterviewers: PropTypes.func.isRequired,
-  showEditModal: PropTypes.func.isRequired,
+  showModalE: PropTypes.func.isRequired,
   setSelectInterviewerId: PropTypes.func.isRequired,
 }
 
@@ -78,5 +78,5 @@ export default connect(mapStateToProps,
   {
     fetchInterviewers,
     setSelectInterviewerId,
-    showEditModal,
+    showModalE,
   })(Interviewers)
