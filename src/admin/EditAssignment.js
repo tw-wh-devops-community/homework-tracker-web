@@ -139,7 +139,7 @@ class EditAssignment extends Component {
 }
 
 EditAssignment.propTypes = {
-  assignment: PropTypes.objectOf(AssignmentShape).isRequired,
+  assignment: AssignmentShape.isRequired,
   showEditModal: PropTypes.func.isRequired,
   updateAssignment: PropTypes.func.isRequired,
   interviewerOptions: PropTypes.arrayOf(InterviewerOptionShape),

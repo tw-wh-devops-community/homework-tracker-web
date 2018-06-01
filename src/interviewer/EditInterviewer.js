@@ -89,7 +89,7 @@ export class EditInterviewer extends Component {
 }
 
 EditInterviewer.propTypes = {
-  interviewer: PropTypes.objectOf(InterviewerObjShape).isRequired,
+  interviewer: InterviewerObjShape.isRequired,
   updateInterviewer: PropTypes.func.isRequired,
   roleOptions: PropTypes.arrayOf(RoleOptionShape),
   onCancel: PropTypes.func.isRequired,
