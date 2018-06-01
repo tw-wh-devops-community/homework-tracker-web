@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Button } from 'antd'
 import Assignments from './Assignments'
 import EditAssignment from './EditAssignment'
 import NewAssignment from './NewAssignment'
@@ -24,7 +25,7 @@ export class Admin extends Component {
       <div className='homepage'>
         <div className="header">
           <div className="button-new">
-            <button onClick={this.changeShowModal}>New</button>
+            <Button onClick={() => this.changeShowModal()} type="primary">New</Button>
           </div>
         </div>
         <Assignments />

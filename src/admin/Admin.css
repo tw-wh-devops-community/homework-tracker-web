@@ -26,7 +26,5 @@ body {
 }
 .button-new button{
   font-size: 20px;
-  padding: 8px 35px;
-  background-color: #4eb0d0;
-  color: white;
+  height: 40px;
 }

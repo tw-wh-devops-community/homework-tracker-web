@@ -15,24 +15,13 @@ body {
   display: flex;
   float: left;
 }
-.button-search button{
-  font-size: 20px;
-  padding: 8px 35px;
-  background-color: #4eb0d0;
-  color: white;
-}
-.button-search input{
-  font-size: 25px;
-  padding: 3px;
-}
-.button-new{
+.button-new-ass{
   height: 65px;
   align-items: center;
   float: right;
+  display: flex;
 }
-.button-new button{
+.button-new-ass button{
   font-size: 20px;
-  padding: 8px 35px;
-  background-color: #4eb0d0;
-  color: white;
+  height: 40px;
 }
