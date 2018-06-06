@@ -42,8 +42,8 @@ export class EditInterviewer extends Component {
       return
     }
     this.setState({ validateFailed: false })
-    const { name, employeeId, jobRole, id } = this.state
-    console.log({ name, employeeId, jobRole, id })
+    // const { name, employeeId, jobRole, id } = this.state
+    // console.log({ name, employeeId, jobRole, id })
     // this.props.createInterviewer({
     //   name,
     //   employeeId,
@@ -90,7 +90,7 @@ export class EditInterviewer extends Component {
 
 EditInterviewer.propTypes = {
   interviewer: InterviewerObjShape.isRequired,
-  updateInterviewer: PropTypes.func.isRequired,
+  // updateInterviewer: PropTypes.func.isRequired,
   roleOptions: PropTypes.arrayOf(RoleOptionShape),
   onCancel: PropTypes.func.isRequired,
   fetchRoles: PropTypes.func.isRequired,
