@@ -21,6 +21,8 @@ export const showErrorMsg = createAction(SHOW_ERROR_MSG, msg => msg)
 
 export const showModal = createAction(SHOW_NEW_MODAL)
 
+export const showModalE = createAction(SHOW_EDIT_MODAL)
+
 export const createInterviewer = data => (
   (dispatch) => {
     api.post('/interviewers', data)
@@ -38,14 +40,17 @@ export const createInterviewer = data => (
 export const updateInterviewer = data => (
   (dispatch) => {
     api.put('/interviewers',
-      data).then(() =>
-        dispatch(fetchInterviewers('')),
+      data).then(() => {
+        dispatch(showErrorMsg(''))
+        dispatch(showModalE())
+        dispatch(fetchInterviewers(''))
+    })
+    .catch((res) => {
+            dispatch(showErrorMsg(res.response.data.message))
+        },
     )
   }
 )
 
 export const setSelectInterviewerId
   = createAction(SET_INTERVIEWER_ID, interviewerId => interviewerId)
-
-export const showModalE = createAction(SHOW_EDIT_MODAL)
-

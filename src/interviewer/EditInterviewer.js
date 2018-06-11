@@ -42,13 +42,13 @@ export class EditInterviewer extends Component {
       return
     }
     this.setState({ validateFailed: false })
-    // const { name, employeeId, jobRole, id } = this.state
-    // console.log({ name, employeeId, jobRole, id })
-    // this.props.createInterviewer({
-    //   name,
-    //   employeeId,
-    //   jobRole,
-    // })
+    const { name, employeeId, jobRole, id } = this.state
+    this.props.updateInterviewer({
+      name,
+      employeeId,
+      jobRole,
+      id,
+    })
   }
 
   render() {
@@ -95,6 +95,7 @@ EditInterviewer.propTypes = {
   onCancel: PropTypes.func.isRequired,
   fetchRoles: PropTypes.func.isRequired,
   errorMsg: PropTypes.string.isRequired,
+  updateInterviewer: PropTypes.func.isRequired,
 }
 
 EditInterviewer.defaultProps = {
