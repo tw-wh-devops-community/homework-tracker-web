@@ -51,6 +51,9 @@
 .bind:hover .table-unbindIcon{
     display:block;
 }
+.unbind:hover .table-unbindIcon{
+    display:block;
+}
 
 .table-column i{
     cursor:pointer
