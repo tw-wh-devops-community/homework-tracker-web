@@ -33,7 +33,7 @@ export class Interviewers extends Component {
     })
     let unbind = null
     if (interviewer.open_id) {
-      unbind = <i className='fa fa-unlock table-unbindIcon' role='presentation' onClick={() => this.unBindEditModal(interviewer._openids_id)} />
+      unbind = <i className='fa fa-unlock table-unbindIcon' role='presentation' onClick={() => this.unBindEditModal(interviewer.openids_id)} />
     }
     return (
       <div
