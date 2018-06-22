@@ -59,4 +59,5 @@ export const InterviewerObjShape = PropTypes.shape({
   role: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   open_id: PropTypes.string,
+  _openids_id: PropTypes.string,
 })

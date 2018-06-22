@@ -19,14 +19,11 @@ export class Interviewers extends Component {
     this.props.setSelectInterviewerId(selectInterviewerId)
   }
 
-  unBindEditModal = (interviewId, openId) => {
+  unBindEditModal = (id) => {
     const unbinds = window.confirm('确定要解除绑定的操作？')
     if (unbinds) {
       // 发送解绑操作
-      this.props.unbindInterviews({
-        interviewId,
-        openId,
-      })
+      this.props.unbindInterviews(id)
     }
   }
 
@@ -35,8 +32,8 @@ export class Interviewers extends Component {
       'highlight-item': index % 2 === 0,
     })
     let unbind = null
-    if (interviewer.openId) {
-      unbind = <i className='fa fa-unlock table-unbindIcon' role='presentation' onClick={() => this.unBindEditModal(interviewer.id, interviewer.openId)} />
+    if (interviewer.open_id) {
+      unbind = <i className='fa fa-unlock table-unbindIcon' role='presentation' onClick={() => this.unBindEditModal(interviewer._openids_id)} />
     }
     return (
       <div
@@ -46,7 +43,7 @@ export class Interviewers extends Component {
         <div className='table-column'>{interviewer.name}</div>
         <div className='table-column'>{interviewer.employee_id}</div>
         <div className='table-column'>{interviewer.role}</div>
-        <div className='table-column'>{interviewer.openId}</div>
+        <div className='table-column'>{interviewer.open_id}</div>
         <div className='table-column'>
           <i className='fa fa-edit table-editIcon' role='presentation' onClick={() => this.changeShowEditModal(interviewer.id)} />
           {unbind}
