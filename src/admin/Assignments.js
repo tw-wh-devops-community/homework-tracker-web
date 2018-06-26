@@ -50,6 +50,7 @@ export class Assignments extends Component {
       window.console.log(duringString)
       return duringString
     }
+    return ''
   }
 
   changeShowEditModal = (selectAssignmentId) => {

@@ -17,6 +17,7 @@ export const unbindInterviews = id => (
     window.console.log(`'and' ${id}`)
     api.delete(`../pweb/openId/${id}`).then(() =>
         dispatch(fetchInterviewers('')),
+        window.alert('解绑成功'),
     )
   }
 )
