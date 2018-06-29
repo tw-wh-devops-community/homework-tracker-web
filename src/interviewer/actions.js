@@ -12,6 +12,16 @@ export const SHOW_NEW_MODAL = 'INTERVIEWER/SHOW_NEW_MODAL'
 export const fetchInterviewers = createAction(FETCH_INTERVIEWERS,
   name => api.get(`/interviewers/${name}`))
 
+export const unbindInterviews = id => (
+  (dispatch) => {
+    window.console.log(`'and' ${id}`)
+    api.delete(`../pweb/openId/${id}`).then(() =>
+        dispatch(fetchInterviewers('')),
+        window.alert('解绑成功'),
+    )
+  }
+)
+
 export const fetchRoles = createAction(FETCH_ROLES, () => api.get('/roles'))
 
 export const deleteInterviewer = createAction(DELETE_INTERVIEWER, interviewerId =>

@@ -18,6 +18,11 @@
     background-color: #dedada;
 }
 
+.scroll-align {
+    overflow-x: scroll;
+    width: 100%
+}
+
 .highlight-item{
     background-color: #ffffff;
 }
