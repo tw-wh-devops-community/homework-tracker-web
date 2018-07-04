@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
+  Redirect,
 } from 'react-router-dom'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -14,11 +16,12 @@ import { Home } from './home/Home'
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <div>
+      <Switch>
         {/* <Route exact path="/home/admin" component={Admin} /> */}
         <Route exact path="/home" component={Home} />
         <Route path="/assignments" component={Assignments} />
-      </div>
+        <Redirect to='/home' />
+      </Switch>
     </Router>
   </Provider>,
   document.getElementById('root'),
